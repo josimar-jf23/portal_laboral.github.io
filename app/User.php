@@ -9,13 +9,13 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    
     protected $fillable = [
-        'name', 'email', 'password','tipo','empresas_id'
+        'name', 'email', 'password','celular','tipo','estado','empresa_id'
     ];
     
-    public function empresas(){
-        return $this->hashMany("App\Empresas");
+    public function empresa(){
+        return $this->belongsTo(Empresa::class);
     }
 
     protected $hidden = [

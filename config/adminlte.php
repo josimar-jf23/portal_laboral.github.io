@@ -246,6 +246,12 @@ return [
             'text' => 'Dashboard',
             'route'  => 'admin.dashboard.index',
         ],
+        ['header' => 'Mantenimientos'],
+        [
+            'text' => 'Usuarios',
+            'icon'        => 'fas fa-fw fa-users',
+            'route'  => 'admin.usuarios.index',
+        ],
         [
             'text'        => 'pages',
             'url'         => 'admin/pages',

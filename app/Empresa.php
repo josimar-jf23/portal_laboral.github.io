@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Empresas extends Model
+class Empresa extends Model
 {
+    
     protected $fillable = [
         'nombre', 'descripcion', 'estado'
     ];
     
     public function users(){
-        return $this->belongsTo("App\User");
+        return $this->hasMany(User::class);
     }
 }
