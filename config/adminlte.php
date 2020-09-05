@@ -253,6 +253,11 @@ return [
             'route'  => 'admin.usuarios.index',
         ],
         [
+            'text' => 'Empresas',
+            'icon'        => 'fas fa-fw fa-users',
+            'route'  => 'admin.empresas.index',
+        ],
+        [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
