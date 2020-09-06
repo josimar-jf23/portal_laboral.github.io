@@ -69,11 +69,10 @@ class UsuariosController extends Controller
     }
     public function destroy($id)
     {
-        dd($id);
-        /*
-        $categoria=Categorias::findOrFail($id);
-        $categoria->delete();
-        return redirect()->route('admin.categorias.index');
-        */
+        $user=User::findOrFail($id);
+        $user->estado=($user->estado=='1')?'0':'0';
+        $user->save();
+        //dd($id);        
+        return redirect()->route('admin.usuarios.index');
     }
 }

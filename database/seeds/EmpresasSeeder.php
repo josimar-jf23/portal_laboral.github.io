@@ -13,7 +13,9 @@ class EmpresasSeeder extends Seeder
     {
         DB::table('empresas')->insert([
             'nombre'        => 'Anonima',
-            'descripcion'   => 'Empresa Primaria'
+            'descripcion'   => 'Empresa Primaria',
+            'ciudad_id'     => '1',
+            'rubro_id'      => '1'
         ]);
     }
 }

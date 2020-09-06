@@ -15,7 +15,7 @@ class UsuariosSeeder extends Seeder
             'name'          => 'Administrador',
             'email'         => 'admin@admin.com',
             'password'      =>  bcrypt('admin123'),
-            'empresas_id'   =>  '1'
+            'empresa_id'   =>  '1'
         ]);
     }
 }

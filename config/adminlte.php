@@ -254,7 +254,7 @@ return [
         ],
         [
             'text' => 'Empresas',
-            'icon'        => 'fas fa-fw fa-users',
+            'icon'        => 'fa fa-fw fa-building',
             'route'  => 'admin.empresas.index',
         ],
         [

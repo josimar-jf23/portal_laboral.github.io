@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Usuarios')
+@section('title', 'Empresas')
 
 @section('plugins.Fontawesome',true)
 @section('plugins.Datatables',true)
@@ -13,38 +13,42 @@
 <div class="row justify-content-center">
     <div class="card">
         <div class="card-header">
-            <h1>Usuarios</h1>
-            <a href="{{ route('admin.usuarios.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+            <h1>Empresas</h1>
+            <a href="{{ route('admin.empresas.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
         </div>
         <div class="card-body">
             <div class="col-md-12">
-                <table class="table table-bordered table-sm" id="table_usuarios">
+                <table class="table table-bordered table-sm" id="table_empresas">
                     <thead class="thead-dark">
                         <th>Nro</th>
                         <th>Nombre</th>
-                        <th>Emmail</th>
-                        <th>Celular</th>
-                        <th>Tipo</th>
-                        <th>Empresa</th>
-                        <th>Estado</th>
+                        <th>Tipo Doc</th>
+                        <th>Num Doc</th>
+                        <th>Telefono</th>
+                        <th>Direccion</th>
+                        <th>Ciudad</th>
+                        <th>Rumbro</th>
+                        <th>Descripcion</th>
                         <th></th>
                     </thead>
-                    <tbody>
-                                                
-                        @foreach ($usuarios as $r)
+                    <tbody>                    
+                        @foreach ($empresas as $r)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $r->name}}</td>
-                                <td>{{ $r->email}}</td>
-                                <td>{{ $r->celular}}</td>
-                                <td>{{ $r->tipo=='0'?'Cliente':'Admin'}}</td>
-                                <td>{{ $r->empresa->nombre}}</td>
-                                <td>{{ $r->estado=='0'?'Inactivo':'Activo'}}</td>
+                                <td>{{ $r->nombre}}</td>
+                                <td>{{ ($r->tipo_doc!='')?(($r->tipo_doc!='0')?'DNI':'RUC'):'-'}}</td>
+                                <td>{{ ($r->num_doc!='')?$r->num_doc:'-'}}</td>
+                                <td>{{ $r->telefono}}</td>
+                                <td>{{ $r->direccion}}</td>
+                                <td>{{ $r->ciudad->nombre}}</td>
+                                <td>{{ $r->rubro->nombre}}</td>
+                                <td>{{ $r->descripcion}}</td>
                                 <td><table class="table-sm table-borderless">
                                     <tr>                                        
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.usuarios.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
+                                        <td><a class="btn-sm btn-success" href="{{ route('admin.empresas.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
                                         <td>
-                                            <form id="myform{{$r->id}}" action="{{ url('/admin/usuarios', ['id' => $r->id]) }}" method="post">                                                
+                                            <form id="myform{{$r->id}}" action="{{ url('/admin/empresas', ['id' => $r->id]) }}" method="post">
+                                                
                                                 <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
                                                 <input type="hidden" name="_method" value="delete" />
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -70,7 +74,7 @@
 
 @section('js')
     <script> 
-        $('#table_usuarios').DataTable({
+        $('#table_empresas').DataTable({
             responsive : true,
             autoWidth : false,
             "language": {
