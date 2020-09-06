@@ -19,7 +19,7 @@ class CreateEmpresasTable extends Migration
             $table->integer('tipo_doc')->nullable();//0:ruc,1:dni
             $table->string('num_doc',11)->nullable();//ruc:11digitos,dni:8digitos
             $table->string('telefono',9)->nullable();
-            $table->point('localizacion')->nullable();
+            $table->text('localizacion')->nullable();
             $table->string('direccion')->nullable();
             $table->string('descripcion')->nullable();
             $table->integer('ciudad_id')->unsigned();
