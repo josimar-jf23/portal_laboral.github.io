@@ -27,5 +27,5 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
     
 });
 Auth::routes();
-
+Route::post('/dynamics/fetch','PaisDepartamentoCiudadController@fetch')->name('dynamics.fetch');
 Route::get('/home', 'HomeController@index')->name('home');
