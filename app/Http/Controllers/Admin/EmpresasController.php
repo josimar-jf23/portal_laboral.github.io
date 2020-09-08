@@ -27,12 +27,16 @@ class EmpresasController extends Controller
     {
         
         $request->validate([
-            'name' => 'required|max:255',
+            'nombre' => 'required|max:255',
+            'tipo_doc' => 'required',
+            'num_doc' => 'required',
             'ciudad_id' => 'required',
             'rubro_id' => 'required'
         ]);
-        dd($request);
-        $empresa=new Empresa($request->all());
+        
+        $request=$request->except('pais_id');
+        //dd($request);
+        $empresa=new Empresa($request);
         //dd($empresa);
         $empresa->save();
         return redirect()->route('admin.empresas.index');

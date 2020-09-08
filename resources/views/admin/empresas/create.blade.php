@@ -27,7 +27,7 @@
                         <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre<span style="color:red">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
                             @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -38,7 +38,7 @@
                     <div class="form-group row">
                         <label for="tipo_doc" class="col-md-4 col-form-label text-md-right">Tipo Documento<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="tipo_doc" name="tipo_doc">
+                            <select class="form-control" id="tipo_doc" name="tipo_doc" required>
                                 <option value="">Seleccionar</option>
                                 <option value="0" {{ old('tipo_doc')?'checked':'' }}>Ruc</option>
                                 <option value="1" {{ old('tipo_doc')?'checked':'' }}>Dni</option>                                
@@ -46,10 +46,10 @@
                         </div>                       
                     </div>
                     <div class="form-group row">
-                        <label for="num_doc" class="col-md-4 col-form-label text-md-right">Tipo Documento<span style="color:red">*</span></label>
+                        <label for="num_doc" class="col-md-4 col-form-label text-md-right">Numero Documento<span style="color:red">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="num_doc" type="text" class="form-control @error('num_doc') is-invalid @enderror" maxlength="11" name="num_doc" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"  value="{{ old('num_doc') }}" autocomplete="num_doc">
+                            <input id="num_doc" type="text" class="form-control @error('num_doc') is-invalid @enderror" name="num_doc" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
                             @error('num_doc')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="direccion" class="col-md-4 col-form-label text-md-right">Direccion<span style="color:red">*</span></label>
+                        <label for="direccion" class="col-md-4 col-form-label text-md-right">Direccion</label>
 
                         <div class="col-md-6">
                             <input id="direccion" type="text" class="form-control @error('direccion') is-invalid @enderror" maxlength="200" name="direccion" value="{{ old('direccion') }}" autocomplete="num_doc">
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="descripcion" class="col-md-4 col-form-label text-md-right">descripcion<span style="color:red">*</span></label>
+                        <label for="descripcion" class="col-md-4 col-form-label text-md-right">Descripcion</label>
 
                         <div class="col-md-6">
                             <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" maxlength="200" name="descripcion" value="{{ old('descripcion') }}" autocomplete="num_doc">
@@ -94,9 +94,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="rubro_id" class="col-md-4 col-form-label text-md-right">Rubro</label>
+                        <label for="rubro_id" class="col-md-4 col-form-label text-md-right">Rubro<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="rubro_id" name="rubro_id">
+                            <select class="form-control" id="rubro_id" name="rubro_id" required>
                                 <option value="">Seleccionar</option>
                                 @foreach ($rubros as $r)
                                     <option value="{{ $r->id}}">{{ $r->nombre}}</option>
@@ -105,9 +105,9 @@
                         </div>                       
                     </div>
                     <div class="form-group row">
-                        <label for="pais_id" class="col-md-4 col-form-label text-md-right">Pais</label>
+                        <label for="pais_id" class="col-md-4 col-form-label text-md-right">Pais<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="pais_id" name="pais_id">
+                            <select class="form-control" id="pais_id" name="pais_id" required>
                                 <option value="" selected>Seleccionar</option>
                                 @foreach ($paises as $r)
                                     <option value="{{ $r->id}}">{{ $r->nombre}}</option>
@@ -116,17 +116,17 @@
                         </div>                       
                     </div>
                     <div class="form-group row">
-                        <label for="departamento_id" class="col-md-4 col-form-label text-md-right">Departamentos</label>
+                        <label for="departamento_id" class="col-md-4 col-form-label text-md-right">Departamentos<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="departamento_id" name="departamento_id" >
+                            <select class="form-control" id="departamento_id" name="departamento_id" required>
                                 <option value="">Seleccionar</option>                                
                             </select>
                         </div>                       
                     </div>
                     <div class="form-group row">
-                        <label for="ciudad_id" class="col-md-4 col-form-label text-md-right">Ciudades</label>
+                        <label for="ciudad_id" class="col-md-4 col-form-label text-md-right">Ciudades<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="ciudad_id" name="ciudad_id">
+                            <select class="form-control" id="ciudad_id" name="ciudad_id" required>
                                 <option value="">Seleccionar</option>                                
                             </select>
                         </div>                       
@@ -179,8 +179,8 @@
                     console.log('sin pais');
                 }
                 
-              });
-              $( "#departamento_id" ).change(function() {
+            });
+            $( "#departamento_id" ).change(function() {
                 var depart=$('#departamento_id').val();
                 var ciuda=$('#ciudad_id');
                 var _token= $('#_token').val();
@@ -191,7 +191,7 @@
                         data:{accion:1,valor:depart,_token:_token},
                         beforeSend: function(){
                             ciuda.prop( "disabled", true );
-                          },
+                            },
                         success: function(result){
                             ciuda.find('option').remove();
                             $("#ciudad_id").append(result);
@@ -205,8 +205,23 @@
                 }else{
                     console.log('sin pais');
                 }
-                
-              });           
+            
+            }); 
+            $( "#tipo_doc" ).change(function() {
+                var tip=$('#tipo_doc').val();
+                var num=$('#num_doc').val();
+                if(tip=='0'){
+                    $('#num_doc').prop('readonly', false);
+                    $('#num_doc').attr('maxlength', '11');
+                }else if(tip==1){
+                    //$('#num_doc').removeProp('readonly');
+                    $('#num_doc').prop('readonly', false);
+                    $('#num_doc').attr('maxlength', '8');
+                }else{
+                    $('#num_doc').prop('readonly',true);
+                }         
+            
+            });          
         });
     </script>
 @stop
