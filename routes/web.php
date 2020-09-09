@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () { return view('welcome');});
+Route::get('/', 'PublicacionesController@index')->name('inicio');
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
     Route::resource('/dashboard', 'Admin\DashboardController',['as'=>'admin']);
     Route::resource('/usuarios', 'Admin\UsuariosController',['as'=>'admin']);
@@ -28,4 +27,4 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
 });
 Auth::routes();
 Route::post('/dynamics/fetch','PaisDepartamentoCiudadController@fetch')->name('dynamics.fetch');
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
