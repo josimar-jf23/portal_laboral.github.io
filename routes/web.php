@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () { return view('welcome');});
-Route::get('/', 'PublicacionesController@index')->name('inicio');
+Route::get('/', function () { return view('welcome');});
+//Route::get('/', 'PublicacionesController@index')->name('inicio');
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
     Route::resource('/dashboard', 'Admin\DashboardController',['as'=>'admin']);
     Route::resource('/usuarios', 'Admin\UsuariosController',['as'=>'admin']);
