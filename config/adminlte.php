@@ -234,8 +234,8 @@ return [
     'menu' => [
         [
             'text' => 'search',
-            'search' => true,
-            'topnav' => true,
+            'search' => false,
+            'topnav' => false,
         ],
         [
             'text' => 'blog',
@@ -248,21 +248,69 @@ return [
         ],
         ['header' => 'Mantenimientos'],
         [
-            'text' => 'Usuarios',
-            'icon'        => 'fas fa-fw fa-users',
-            'route'  => 'admin.usuarios.index',
+            'text'      => 'Usuarios',
+            'icon'      => 'fas fa-fw fa-users',
+            'route'     => 'admin.usuarios.index',
         ],
         [
-            'text' => 'Empresas',
-            'icon'        => 'fa fa-fw fa-building',
-            'route'  => 'admin.empresas.index',
+            'text'  => 'Empresas',
+            'icon'  => 'fa fa-fw fa-building',
+            'route' => 'admin.empresas.index',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Rubros',
+            'icon'        => 'fa fa-fw fa-users',
+            'url'         => '#',
+        ],
+        [
+            'text'        => 'Contactos',
+            'url'         => '#',
+            'icon'        => 'far fa-fw fa-address-card',
+        ],
+        [
+            'text'        => 'Areas',
+            'icon'        => 'fa fa-fw fa-cogs',
+            'url'         => '#',
+        ],
+        
+        [
+            'text'        => 'Puestos Trabajo',
+            'url'         => '#',
+            'icon'        => 'fa fa-fw fa-briefcase',
+        ],
+        [
+            'text'        => 'Suscriptores',
+            'url'         => '#',
+            'icon'        => 'fa fa-fw fa-handshake',
+        ],
+        [
+            'text'        => 'Publicaciones',
+            'url'         => '#',
+            'icon'        => 'fa fa-fw fa-newspaper',
+        ],
+        [
+            'text'    => 'Utilitarios',
+            'icon'    => 'fa fa-fw fa-wrench',
+            'submenu' => [
+                [
+                    'text' => 'Paises',
+                    'icon' => 'fas fa-fw fa-globe',
+                    'icon_color' => 'red',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Departamentos',
+                    'icon' => 'fas fa-fw fa-globe',
+                    'icon_color' => 'blue',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Ciudades',
+                    'icon' => 'fas fa-fw fa-globe',
+                    'icon_color' => 'cyan',
+                    'url'  => '#',
+                ],
+            ],
         ],
         ['header' => 'account_settings'],
         [
@@ -275,57 +323,19 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        ['header' => 'Reportes'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
+            'text'       => 'Reporte1',
             'icon_color' => 'red',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'Reporte2',
             'icon_color' => 'yellow',
             'url'        => '#',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'Reporte3',
             'icon_color' => 'cyan',
             'url'        => '#',
         ],

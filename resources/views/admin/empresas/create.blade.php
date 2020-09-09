@@ -40,8 +40,8 @@
                         <div class="col-md-6">                      
                             <select class="form-control" id="tipo_doc" name="tipo_doc" required>
                                 <option value="">Seleccionar</option>
-                                <option value="0" {{ old('tipo_doc')?'checked':'' }}>Ruc</option>
-                                <option value="1" {{ old('tipo_doc')?'checked':'' }}>Dni</option>                                
+                                <option value="0" {{ old('tipo_doc')?'selected':'' }}>Ruc</option>
+                                <option value="1" {{ old('tipo_doc')?'selected':'' }}>Dni</option>                                
                             </select>
                         </div>                       
                     </div>

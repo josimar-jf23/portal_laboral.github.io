@@ -36,7 +36,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $r->nombre}}</td>
-                                <td>{{ ($r->tipo_doc!='')?(($r->tipo_doc!='0')?'DNI':'RUC'):'-'}}</td>
+                                <td>{{ isset($r->tipo_doc)?($r->tipo_doc!=0?'DNI':'RUC'):''}}</td>
                                 <td>{{ ($r->num_doc!='')?$r->num_doc:'-'}}</td>
                                 <td>{{ $r->telefono}}</td>
                                 <td>{{ $r->direccion}}</td>
