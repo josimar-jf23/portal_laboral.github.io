@@ -20,4 +20,13 @@ class Empresa extends Model
     public function ciudad(){
         return $this->belongsTo(Ciudad::class);
     }
+    public function contactos(){
+        return $this->hasMany(Contacto::class);
+    }
+    public function publicaciones(){
+        return $this->hasMany(Publicacion::class);
+    }
+    public function puestos(){
+        return $this->hasMany(Puesto::class);
+    }
 }

@@ -297,7 +297,7 @@ return [
                     'text' => 'Paises',
                     'icon' => 'fas fa-fw fa-globe',
                     'icon_color' => 'red',
-                    'url'  => '#',
+                    'route'     => 'admin.paises.index',
                 ],
                 [
                     'text' => 'Departamentos',
