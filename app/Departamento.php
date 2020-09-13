@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Departamento extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'nombre','ubigeo', 'pais_id'
     ];

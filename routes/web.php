@@ -20,7 +20,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
     Route::resource('/usuarios', 'Admin\UsuariosController',['as'=>'admin']);
     Route::resource('/empresas', 'Admin\EmpresasController',['as'=>'admin']);
     Route::resource('/paises', 'Admin\PaisesController',['as'=>'admin']);
-    //Route::resource('/subcategorias', 'Admin\SubcategoriasController',['as'=>'admin']);
+    Route::resource('/departamentos', 'Admin\DepartamentosController',['as'=>'admin']);
+    Route::resource('/ciudades', 'Admin\CiudadesController',['as'=>'admin']);
     //Route::resource('/productos', 'Admin\ProductosController',['as'=>'admin']);
     //Route::resource('/publicaciones', 'Admin\PublicacionesController',['as'=>'admin']);
     //Route::resource('/portadas', 'Admin\PortadasController',['as'=>'admin']);
