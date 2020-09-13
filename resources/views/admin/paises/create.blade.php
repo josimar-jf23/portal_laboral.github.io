@@ -23,24 +23,23 @@
                 <form method="POST" action="{{ route('admin.paises.store') }}">
                     <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
                     <div class="form-group row">
-                        <label for="abrev" class="col-md-4 col-form-label text-md-right">Abreviatura<span style="color:red">*</span></label>
+                        <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre<span style="color:red">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="abrev" type="text" class="form-control @error('abrev') is-invalid @enderror" name="abrev" value="" required>
-                            @error('abrev')
+                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="" required>
+                            @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre<span style="color:red">*</span></label>
+                        <label for="descripcion" class="col-md-4 col-form-label text-md-right">Descripcion<span style="color:red">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="" required>
-                            @error('nombre')
+                            <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="" required>
+                            @error('descripcion')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

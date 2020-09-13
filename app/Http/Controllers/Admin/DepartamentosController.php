@@ -9,6 +9,8 @@ use App\Pais;
 
 class DepartamentosController extends Controller
 {
+
+   
     public function index(){
         $departamentos=Departamento::all();
         //dd($usuarios->paises);

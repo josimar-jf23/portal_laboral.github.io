@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubArea extends Model
 {
+    protected $table='subareas';
     protected $fillable = [
         'nombre','descripcion', 'area_id'
     ];

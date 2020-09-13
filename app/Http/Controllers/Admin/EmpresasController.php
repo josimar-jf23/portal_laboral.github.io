@@ -12,6 +12,8 @@ use App\Ciudad;
 
 class EmpresasController extends Controller
 {
+
+    
     public function index(){
         $empresas=Empresa::where('estado',1)
                     ->orderBy('nombre','asc')->get();

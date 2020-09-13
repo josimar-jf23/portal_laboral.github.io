@@ -12,6 +12,8 @@ use App\Empresa;
 
 class UsuariosController extends Controller
 {
+
+    
     public function index(){
         //$usuarios=DB::table('users')>join('empresas','users.empresas_id','=','empresas.id')->get();
         $usuarios=User::all();

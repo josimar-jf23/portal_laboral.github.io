@@ -271,7 +271,7 @@ return [
         [
             'text'        => 'Areas',
             'icon'        => 'fa fa-fw fa-cogs',
-            'url'         => '#',
+            'route'       => 'admin.areas.index',
         ],
         
         [

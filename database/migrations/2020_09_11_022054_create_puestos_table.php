@@ -16,7 +16,7 @@ class CreatePuestosTable extends Migration
         Schema::create('puestos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',250);
-            $table->string('descripcion',250);
+            $table->string('descripcion',250)->nullable();
             $table->integer('empresa_id')->unsigned();
             $table->foreign('empresa_id')->references('id')->on('empresas');
             $table->integer('subarea_id')->unsigned();

@@ -10,6 +10,8 @@ use App\Pais;
 
 class CiudadesController extends Controller
 {
+
+    
     public function index(){
         $ciudades=Ciudad::all();
         //dd($usuarios->paises);

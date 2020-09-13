@@ -8,7 +8,8 @@ use App\Pais;
 
 class PaisesController extends Controller
 {
-    
+
+      
     public function index(){
         $paises=Pais::all();
         //dd($usuarios->paises);
@@ -46,7 +47,7 @@ class PaisesController extends Controller
         $pais=Pais::findOrFail($id);
         $request->validate([
             'abrev' => 'required|max:10|unique:paises,abrev'.$pais->id,
-            'nombre' => 'required|max:10|unique:paises,nombre'.$pais->id
+            'nombre' => 'required|unique:paises,nombre'.$pais->id
         ]);
         $pais->fill($request);
         $pais->save();

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Paises')
+@section('title', 'Areas')
 
 @section('plugins.Fontawesome',true)
 @section('plugins.Datatables',true)
@@ -13,34 +13,33 @@
 <div class="row justify-content-center">
     <div class="card">
         <div class="card-header">
-            <h1>Paises</h1>
-            <a href="{{ route('admin.paises.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+            <h1>Areas</h1>
+            <a href="{{ route('admin.areas.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
         </div>
         <div class="card-body">
             <div class="col-md-12">
                 {!! session()->get('error') !!}
             </div>
             <div class="col-md-12">
-                <table class="table table-bordered table-sm" id="table_paises">
+                <table class="table table-bordered table-sm" id="table_areas">
                     <thead class="thead-dark">
-                        <th>Nro</th>
-                        <th>Abrev</th>                      
-                        <th>Nombre</th>                        
+                        <th>Nro</th>                        
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
                         <th></th>
                     </thead>
                     <tbody>                    
-                        @foreach ($paises as $r)
+                        @foreach ($areas as $r)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $r->abrev}}</td>                              
-                                <td>{{ $r->nombre}}</td>                                
+                                <td>{{ $loop->iteration }}</td>                                
+                                <td>{{ $r->nombre}}</td>
+                                <td>{{ $r->descripcion}}</td>
                                 <td><table class="table-sm table-borderless">
-                                    <tr>       
-                                                                        
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.paises.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
-                                        
+                                    <tr> 
+                                        <td><a class="btn-sm btn-success" href="{{ route('admin.areas.show',$r->id)}}"><i class='fa fa-bars'></i> Sub</a></td>                                        
+                                        <td><a class="btn-sm btn-success" href="{{ route('admin.areas.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
                                         <td>
-                                            <form id="myform{{$r->id}}" action="{{ url('/admin/paises', ['id' => $r->id]) }}" method="post">
+                                            <form id="myform{{$r->id}}" action="{{ url('/admin/areas', ['id' => $r->id]) }}" method="post">
                                                 
                                                 <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
                                                 <input type="hidden" name="_method" value="delete" />
@@ -67,7 +66,7 @@
 
 @section('js')
     <script> 
-        $('#table_paises').DataTable({
+        $('#table_areas').DataTable({
             responsive : true,
             autoWidth : false,
             "language": {

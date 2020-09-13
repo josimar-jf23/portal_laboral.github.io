@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('welcome');});
 //Route::get('/', 'PublicacionesController@index')->name('inicio');
-Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
+Route::group(['prefix' => 'admin','middleware'=>['auth','preventBackHistory']], function () {
     Route::resource('/dashboard', 'Admin\DashboardController',['as'=>'admin']);
     Route::resource('/usuarios', 'Admin\UsuariosController',['as'=>'admin']);
     Route::resource('/empresas', 'Admin\EmpresasController',['as'=>'admin']);
     Route::resource('/paises', 'Admin\PaisesController',['as'=>'admin']);
     Route::resource('/departamentos', 'Admin\DepartamentosController',['as'=>'admin']);
     Route::resource('/ciudades', 'Admin\CiudadesController',['as'=>'admin']);
+    Route::resource('/areas', 'Admin\AreasController',['as'=>'admin']);
+    Route::resource('/subareas', 'Admin\SubAreasController',['as'=>'admin']);
     //Route::resource('/productos', 'Admin\ProductosController',['as'=>'admin']);
     //Route::resource('/publicaciones', 'Admin\PublicacionesController',['as'=>'admin']);
     //Route::resource('/portadas', 'Admin\PortadasController',['as'=>'admin']);
