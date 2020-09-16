@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','preventBackHistory']], 
     Route::resource('/ciudades', 'Admin\CiudadesController',['as'=>'admin']);
     Route::resource('/areas', 'Admin\AreasController',['as'=>'admin']);
     Route::resource('/subareas', 'Admin\SubAreasController',['as'=>'admin']);
-    //Route::resource('/productos', 'Admin\ProductosController',['as'=>'admin']);
+    Route::resource('/rubros', 'Admin\RubrosController',['as'=>'admin']);
     //Route::resource('/publicaciones', 'Admin\PublicacionesController',['as'=>'admin']);
     //Route::resource('/portadas', 'Admin\PortadasController',['as'=>'admin']);
     

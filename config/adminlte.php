@@ -261,7 +261,7 @@ return [
         [
             'text'        => 'Rubros',
             'icon'        => 'fa fa-fw fa-users',
-            'url'         => '#',
+            'route'       => 'admin.rubros.index',
         ],
         [
             'text'        => 'Contactos',

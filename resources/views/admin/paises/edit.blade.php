@@ -23,18 +23,7 @@
                 <form method="POST" action="{{ route('admin.paises.update',$pais->id) }}">
                     {{ method_field('PUT') }}
                     <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
-                    <div class="form-group row">
-                        <label for="abrev" class="col-md-4 col-form-label text-md-right">abreviatura<span style="color:red">*</span></label>
-
-                        <div class="col-md-6">
-                            <input id="abrev" type="text" class="form-control @error('abrev') is-invalid @enderror" name="abrev" value="{{ $pais->abrev }}" required>
-                            @error('abrev')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>              
+                                 
                     <div class="form-group row">
                         <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre<span style="color:red">*</span></label>
 
@@ -47,7 +36,18 @@
                             @enderror
                         </div>
                     </div>
-                    
+                    <div class="form-group row">
+                        <label for="abrev" class="col-md-4 col-form-label text-md-right">Abreviatura<span style="color:red">*</span></label>
+
+                        <div class="col-md-6">
+                            <input id="abrev" type="text" class="form-control @error('abrev') is-invalid @enderror" name="abrev" value="{{ $pais->abrev }}" required>
+                            @error('abrev')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div> 
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success">
