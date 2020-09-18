@@ -265,7 +265,7 @@ return [
         ],
         [
             'text'        => 'Contactos',
-            'url'         => '#',
+            'route'       => 'admin.contactos.index',
             'icon'        => 'far fa-fw fa-address-card',
         ],
         [
