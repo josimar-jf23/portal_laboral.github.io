@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','preventBackHistory']], 
     Route::resource('/rubros', 'Admin\RubrosController',['as'=>'admin']);
     Route::resource('/contactos', 'Admin\ContactosController',['as'=>'admin']);
     Route::resource('/puestos', 'Admin\PuestosController',['as'=>'admin']);
+    Route::resource('/suscriptores', 'Admin\SuscriptoresController',['as'=>'admin']);
     //Route::resource('/publicaciones', 'Admin\PublicacionesController',['as'=>'admin']);
     //Route::resource('/portadas', 'Admin\PortadasController',['as'=>'admin']);
     

@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
             $event->menu->add([
                 'text'        => 'Suscriptores',
-                'url'         => '#',
+                'route'     => 'admin.suscriptores.index',
                 'icon'        => 'fa fa-fw fa-handshake',
             ]);
             $event->menu->add([
