@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Pais;
 use App\Departamento;
 use App\Ciudad;
+use App\SubArea;
 
 class PaisDepartamentoCiudadController extends Controller
 {
@@ -41,6 +42,20 @@ class PaisDepartamentoCiudadController extends Controller
                 
                 break;
         }
+        echo $resul;
+    }
+    public function fetch_areas(Request $request){
+        $resul="";
+        $ar=$request->valor;
+        $subareas=SubArea::where('area_id',$ar)->get();
+        if(isset($subareas)){
+            $resul.='<option value="">Seleccionar</option>';
+            foreach ($subareas as $r) {
+                $resul.='<option value="'.$r->id.'">'.$r->nombre.'</option>';
+            }
+        }else{
+            $resul.='<option value="">Sin Valor</option>';
+        } 
         echo $resul;
     }
 }

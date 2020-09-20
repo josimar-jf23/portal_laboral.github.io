@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Contactos')
+@section('title', 'Puestos de Trabajo')
 
 @section('plugins.Fontawesome',true)
 @section('plugins.Datatables',true)
@@ -13,36 +13,38 @@
 <div class="row justify-content-center">
     <div class="card">
         <div class="card-header">
-            <h1>Contactos</h1>
-            <a href="{{ route('admin.contactos.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+            <h1>Puestos de Trabajo</h1>
+            <a href="{{ route('admin.puestos.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
         </div>
         <div class="card-body">
             <div class="col-md-12">
                 {!! session()->get('error') !!}
             </div>
             <div class="col-md-12">
-                <table class="table table-bordered table-sm" id="table_contactos">
+                <table class="table table-bordered table-sm" id="table_puestos">
                     <thead class="thead-dark">
                         <th>Nro</th>                        
                         <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Celular</th>
+                        <th>Descripcion</th>
                         <th>Empresa</th>
+                        <th>Area</th>
+                        <th>SubArea</th>
                         <th></th>
                     </thead>
                     <tbody>                    
-                        @foreach ($contactos as $r)
+                        @foreach ($puestos as $r)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>                                
                                 <td>{{ $r->nombre}}</td>
-                                <td>{{ $r->email}}</td>
-                                <td>{{ $r->celular}}</td>
+                                <td>{{ $r->descripcion}}</td>
                                 <td>{{ $r->empresa->nombre}}</td>
+                                <td>{{ $r->subarea->area->nombre}}</td>
+                                <td>{{ $r->subarea->nombre}}</td>
                                 <td><table class="table-sm table-borderless">
                                     <tr>                                        
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.contactos.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
+                                        <td><a class="btn-sm btn-success" href="{{ route('admin.puestos.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
                                         <td>
-                                            <form id="myform{{$r->id}}" action="{{ url('/admin/contactos', ['id' => $r->id]) }}" method="post">
+                                            <form id="myform{{$r->id}}" action="{{ url('/admin/puestos', ['id' => $r->id]) }}" method="post">
                                                 
                                                 <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
                                                 <input type="hidden" name="_method" value="delete" />
@@ -69,7 +71,7 @@
 
 @section('js')
     <script> 
-        $('#table_contactos').DataTable({
+        $('#table_puestos').DataTable({
             responsive : true,
             autoWidth : false,
             "language": {

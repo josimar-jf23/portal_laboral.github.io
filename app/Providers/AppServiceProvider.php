@@ -32,13 +32,76 @@ class AppServiceProvider extends ServiceProvider
         }
         //
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            $event->menu->add('MAIN NAVIGATION');
+            $event->menu->add(['header' => 'MAIN NAVIGATION']);
             $event->menu->add([
-                'text'        => 'Users',
+                'text'      => 'Usuarios',
+                'icon'      => 'fas fa-fw fa-users',
+                'route'     => 'admin.usuarios.index',
+            ]);
+            $event->menu->add([
+                'text'      => 'Empresas',
+                'icon'      => 'fa fa-fw fa-building',
+                'route'     => 'admin.empresas.index',
+            ]);
+            $event->menu->add([
+                'text'        => 'Rubros',
+                'icon'        => 'fa fa-fw fa-users',
+                'route'       => 'admin.rubros.index',
+            ]);
+            $event->menu->add([
+                'text'        => 'Contactos',
+                'route'       => 'admin.contactos.index',
+                'icon'        => 'far fa-fw fa-address-card',
+            ]);
+            $event->menu->add([
+                'text'        => 'Areas',
+                'icon'        => 'fa fa-fw fa-cogs',
+                'route'       => 'admin.areas.index',                
+            ]);
+            $event->menu->add([
+                'text'      => 'Puestos Trabajo',
+                'route'     => 'admin.puestos.index',
+                'icon'      => 'fa fa-fw fa-briefcase',
+            ]);
+            $event->menu->add([
+                'text'        => 'Suscriptores',
                 'url'         => '#',
-                'icon'        => 'users',
-                'label'       => '1',
-                'label_color' => 'success',
+                'icon'        => 'fa fa-fw fa-handshake',
+            ]);
+            $event->menu->add([
+                'text'        => 'Publicaciones',
+                'url'         => '#',
+                'icon'        => 'fa fa-fw fa-newspaper',
+            ]);
+            $event->menu->add([
+                'text'    => 'Utilitarios',
+                'icon'    => 'fa fa-fw fa-wrench',
+                'submenu' => [
+                    [
+                        'text' => 'Paises',
+                        'icon' => 'fas fa-fw fa-globe',
+                        'icon_color' => 'red',
+                        'route'     => 'admin.paises.index',
+                    ],
+                    [
+                        'text' => 'Departamentos',
+                        'icon' => 'fas fa-fw fa-globe',
+                        'icon_color' => 'blue',
+                        'route'     => 'admin.departamentos.index',
+                    ],
+                    [
+                        'text' => 'Ciudades',
+                        'icon' => 'fas fa-fw fa-globe',
+                        'icon_color' => 'cyan',
+                        'route'     => 'admin.ciudades.index',
+                    ],
+                ],
+            ]);
+            $event->menu->add(['header' => 'REPORTES']);
+            $event->menu->add([
+                'text'       => 'Reporte1',
+                'icon_color' => 'red',
+                'url'        => '#',
             ]);
         });
     }

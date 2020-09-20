@@ -247,6 +247,7 @@ return [
             'text' => 'Dashboard',
             'route'  => 'admin.dashboard.index',
         ],
+        /*
         ['header' => 'Mantenimientos'],
         [
             'text'      => 'Usuarios',
@@ -340,6 +341,7 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
+        */
     ],
 
     /*
