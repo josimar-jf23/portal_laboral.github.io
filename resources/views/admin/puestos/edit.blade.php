@@ -109,7 +109,7 @@
                     $.ajax({
                         url:"{{ route('dynamics.fetch_areas')}}",
                         method:"POST",
-                        data:{valor:area,_token:_token},
+                        data:{accion:0,valor:area,_token:_token},
                         beforeSend: function(){
                             subarea.prop( "disabled", true );
                           },

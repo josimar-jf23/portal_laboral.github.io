@@ -70,7 +70,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
             $event->menu->add([
                 'text'        => 'Publicaciones',
-                'url'         => '#',
+                'route'       => 'admin.publicaciones.index',
                 'icon'        => 'fa fa-fw fa-newspaper',
             ]);
             $event->menu->add([

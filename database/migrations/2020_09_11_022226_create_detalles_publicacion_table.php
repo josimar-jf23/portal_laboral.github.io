@@ -18,7 +18,7 @@ class CreateDetallesPublicacionTable extends Migration
             $table->text('caracteristica');
             $table->integer('orden')->default(1);
             $table->integer('publicacion_id')->unsigned();
-            $table->foreign('publicacion_id')->references('id')->on('publicaciones');
+            $table->foreign('publicacion_id')->references('id')->on('publicaciones')->onDelete('cascade');
             $table->timestamps();
         });
     }

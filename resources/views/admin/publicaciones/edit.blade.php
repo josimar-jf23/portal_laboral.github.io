@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nuevo Puesto de Trabajo')
+@section('title', 'Editar Ciudad')
 
 @section('content_header')
     
@@ -18,37 +18,30 @@
             </div>
         @endif
         <div class="card" style="width: 50rem;">
-            <card-header><h1>Nuevo Puesto de Trabajo</h1></card-header>
+            <card-header><h1>Editar Ciudad</h1></card-header>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.puestos.store') }}">
+                <form method="POST" action="{{ route('admin.ciudades.update',$ciudad->id) }}">
+                    {{ method_field('PUT') }}
                     <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
                     <div class="form-group row">
-                        <label for="empresa_id" class="col-md-4 col-form-label text-md-right">Empresa<span style="color:red">*</span></label>
+                        <label for="pais_id" class="col-md-4 col-form-label text-md-right">Pais<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="empresa_id" name="empresa_id" required>
+                            <select class="form-control" id="pais_id" name="pais_id" required>
                                 <option value="" selected>Seleccionar</option>
-                                @foreach ($empresas as $r)
-                                    <option value="{{ $r->id}}">{{ $r->nombre}}</option>
+                                @foreach ($paises as $r)
+                                    <option value="{{ $r->id}}" {{ ($r->id!=$ciudad->departamento->pais_id)?'':'selected' }}>{{ $r->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>                       
                     </div>
                     <div class="form-group row">
-                        <label for="area_id" class="col-md-4 col-form-label text-md-right">Area<span style="color:red">*</span></label>
+                        <label for="departamento_id" class="col-md-4 col-form-label text-md-right">Departamento<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="area_id" name="area_id" required>
+                            <select class="form-control" id="departamento_id" name="departamento_id" required>
                                 <option value="" selected>Seleccionar</option>
-                                @foreach ($areas as $r)
-                                    <option value="{{ $r->id}}">{{ $r->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>                       
-                    </div>
-                    <div class="form-group row">
-                        <label for="subarea_id" class="col-md-4 col-form-label text-md-right">Sub Area<span style="color:red">*</span></label>
-                        <div class="col-md-6">                      
-                            <select class="form-control" id="subarea_id" name="subarea_id" required>
-                                <option value="" selected>Seleccionar</option>
+                                @foreach ($departamentos as $r)
+                                    <option value="{{ $r->id}}" {{ ($r->id!=$ciudad->departamento_id)?'':'selected' }}>{{ $r->nombre}}</option>
+                                @endforeach 
                             </select>
                         </div>                       
                     </div>
@@ -56,7 +49,7 @@
                         <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre<span style="color:red">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="" required>
+                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $ciudad->nombre }}" required>
                             @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -65,22 +58,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="descripcion" class="col-md-4 col-form-label text-md-right">Descripcion</label>
+                        <label for="ubigeo" class="col-md-4 col-form-label text-md-right">Ubigeo</label>
+
                         <div class="col-md-6">
-                            <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="">
-                            @error('descripcion')
+                            <input id="ubigeo" type="text" class="form-control @error('ubigeo') is-invalid @enderror" name="ubigeo" value="{{ $ciudad->ubigeo }}">
+                            @error('ubigeo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    </div>                   
+                    </div>
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success">
                                 Agregar
                             </button>
-                            <a href="{{ route('admin.puestos.index')}}" class="btn btn-danger">Cancelar</a>
+                            <a href="{{ route('admin.ciudades.index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -97,32 +91,30 @@
     <script> console.log('Hi!'); </script>
     <script>
         $(function(){
-            $( "#area_id" ).change(function() {
-                var area=$('#area_id').val();
-                var subarea=$('#subarea_id');
+            $( "#pais_id" ).change(function() {
+                var pais=$('#pais_id').val();
+                var depart=$('#departamento_id');
                 var _token= $('#_token').val();
-                if(area != ''){
+                if(pais != ''){
                     $.ajax({
-                        url:"{{ route('dynamics.fetch_areas')}}",
+                        url:"{{ route('dynamics.fetch')}}",
                         method:"POST",
-                        data:{accion:0,valor:area,_token:_token},
+                        data:{accion:0,valor:pais,_token:_token},
                         beforeSend: function(){
-                            subarea.prop( "disabled", true );
+                            depart.prop( "disabled", true );
                           },
                         success: function(result){
-                            subarea.find('option').remove();
-                            $("#subarea_id").append(result);
-                            subarea.prop( "disabled", false );
+                            depart.find('option').remove();
+                            $("#departamento_id").append(result);
+                            depart.prop( "disabled", false );
                         },
                         error: function(xhr,status,error){
                             console.log(error);
-                            subarea.prop( "disabled", true );
+                            depart.prop( "disabled", true );
                         }
                     }); 
                 }else{
-                    console.log('sin subareas');
-                    subarea.find('option').remove();
-                    subarea.prop( "disabled", true );
+                    console.log('sin pais');
                 }                
             });         
         });
