@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Ciudad')
+@section('title', 'Editar Publicacion')
 
 @section('content_header')
     
@@ -18,39 +18,74 @@
             </div>
         @endif
         <div class="card" style="width: 50rem;">
-            <card-header><h1>Editar Ciudad</h1></card-header>
+            <card-header><h1>Editar Publicacion</h1></card-header>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.ciudades.update',$ciudad->id) }}">
+                <form method="POST" action="{{ route('admin.publicaciones.update',$publicacion->id) }}">
                     {{ method_field('PUT') }}
                     <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
                     <div class="form-group row">
-                        <label for="pais_id" class="col-md-4 col-form-label text-md-right">Pais<span style="color:red">*</span></label>
+                        <label for="empresa_id" class="col-md-4 col-form-label text-md-right">Empresa<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="pais_id" name="pais_id" required>
+                            <select class="form-control" id="empresa_id" name="empresa_id" required>
                                 <option value="" selected>Seleccionar</option>
-                                @foreach ($paises as $r)
-                                    <option value="{{ $r->id}}" {{ ($r->id!=$ciudad->departamento->pais_id)?'':'selected' }}>{{ $r->nombre}}</option>
+                                @foreach ($empresas as $r)
+                                    <option value="{{ $r->id}}" {{ ($r->id!=$publicacion->empresa_id)?'':'selected' }}>{{ $r->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>                       
                     </div>
                     <div class="form-group row">
-                        <label for="departamento_id" class="col-md-4 col-form-label text-md-right">Departamento<span style="color:red">*</span></label>
+                        <label for="area_id" class="col-md-4 col-form-label text-md-right">Area<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="departamento_id" name="departamento_id" required>
+                            <select class="form-control" id="area_id" name="pais_id" required>
                                 <option value="" selected>Seleccionar</option>
-                                @foreach ($departamentos as $r)
-                                    <option value="{{ $r->id}}" {{ ($r->id!=$ciudad->departamento_id)?'':'selected' }}>{{ $r->nombre}}</option>
-                                @endforeach 
+                                @foreach ($areas as $r)
+                                    <option value="{{ $r->id}}" {{ ($r->id!=$publicacion->puesto->subarea->area_id)?'':'selected' }}>{{ $r->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>                       
                     </div>
                     <div class="form-group row">
-                        <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre<span style="color:red">*</span></label>
-
+                        <label for="subarea_id" class="col-md-4 col-form-label text-md-right">Sub Area<span style="color:red">*</span></label>
+                        <div class="col-md-6">                      
+                            <select class="form-control" id="subarea_id" name="subarea_id" required>
+                                <option value="" selected>Seleccionar</option>
+                                @foreach ($subareas as $r)
+                                    <option value="{{ $r->id}}" {{ ($r->id!=$publicacion->puesto->subarea_id)?'':'selected' }}>{{ $r->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>                       
+                    </div>
+                    <div class="form-group row">
+                        <label for="puesto_id" class="col-md-4 col-form-label text-md-right">Puesto<span style="color:red">*</span></label>
+                        <div class="col-md-6">                      
+                            <select class="form-control" id="puesto_id" name="puesto_id" required>
+                                <option value="" selected>Seleccionar</option>
+                                @foreach ($puestos as $r)
+                                    <option value="{{ $r->id}}" {{ ($r->id!=$publicacion->puesto_id)?'':'selected' }}>{{ $r->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>                       
+                    </div>
+                    <div class="form-group row">
+                        <label for="contacto_id" class="col-md-4 col-form-label text-md-right">Contacto<span style="color:red">*</span></label>
+                        <div class="col-md-6">                      
+                            <select class="form-control" id="contacto_id" name="contacto_id" required>
+                                <option value="" selected>Seleccionar</option>
+                                @foreach ($contactos as $r)
+                                    <option value="{{ $r->id}}" {{ ($r->id!=$publicacion->contacto_id)?'':'selected' }}>{{ $r->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>                       
+                    </div>
+                    <div class="form-group row">
+                        <label for="fecha_convocatoria" class="col-md-4 col-form-label text-md-right">Fecha Convocatoria<span style="color:red">*</span></label>
                         <div class="col-md-6">
-                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $ciudad->nombre }}" required>
-                            @error('nombre')
+                            @php
+                            date_default_timezone_set("America/Lima");
+                            @endphp
+                            <input id="fecha_convocatoria" type="date" value="{{date('Y-m-d')}}" class="form-control @error('fecha_convocatoria') is-invalid @enderror" name="fecha_convocatoria" value="{{ $publicacion->fecha_convocatoria}}" required>
+                            @error('fecha_convocatoria')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -58,15 +93,26 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ubigeo" class="col-md-4 col-form-label text-md-right">Ubigeo</label>
-
+                        <label for="vacantes" class="col-md-4 col-form-label text-md-right">Vacantes<span style="color:red">*</span></label>
                         <div class="col-md-6">
-                            <input id="ubigeo" type="text" class="form-control @error('ubigeo') is-invalid @enderror" name="ubigeo" value="{{ $ciudad->ubigeo }}">
-                            @error('ubigeo')
+                            <input id="vacantes" type="text" class="form-control @error('vacantes') is-invalid @enderror" name="vacantes" value="{{ $publicacion->vacantes}}" required>
+                            @error('vacantes')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sueldo" class="col-md-4 col-form-label text-md-right">Sueldo</label>
+                        <div class="col-md-6">
+                            <input id="sueldo" type="text" class="form-control @error('sueldo') is-invalid @enderror" name="sueldo" value="{{ $publicacion->sueldo}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="adicional" class="col-md-4 col-form-label text-md-right">Adicional</label>
+                        <div class="col-md-6">
+                            <input id="adicional" type="text" class="form-control @error('adicional') is-invalid @enderror" name="adicional" value="{{ $publicacion->adicional}}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -74,7 +120,7 @@
                             <button type="submit" class="btn btn-success">
                                 Agregar
                             </button>
-                            <a href="{{ route('admin.ciudades.index')}}" class="btn btn-danger">Cancelar</a>
+                            <a href="{{ route('admin.publicaciones.index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -91,32 +137,122 @@
     <script> console.log('Hi!'); </script>
     <script>
         $(function(){
-            $( "#pais_id" ).change(function() {
-                var pais=$('#pais_id').val();
-                var depart=$('#departamento_id');
+            $( "#area_id" ).change(function() {
+                var area=$('#area_id').val();
+                var subarea=$('#subarea_id');
                 var _token= $('#_token').val();
-                if(pais != ''){
+                if(area != ''){
                     $.ajax({
-                        url:"{{ route('dynamics.fetch')}}",
+                        url:"{{ route('dynamics.fetch_areas')}}",
                         method:"POST",
-                        data:{accion:0,valor:pais,_token:_token},
+                        data:{accion:0,valor:area,_token:_token},
                         beforeSend: function(){
-                            depart.prop( "disabled", true );
+                            subarea.prop( "disabled", true );
                           },
                         success: function(result){
-                            depart.find('option').remove();
-                            $("#departamento_id").append(result);
-                            depart.prop( "disabled", false );
+                            subarea.find('option').remove();
+                            $("#subarea_id").append(result);
+                            subarea.prop( "disabled", false );
                         },
                         error: function(xhr,status,error){
                             console.log(error);
-                            depart.prop( "disabled", true );
+                            subarea.prop( "disabled", true );
                         }
                     }); 
                 }else{
-                    console.log('sin pais');
+                    console.log('sin area');
                 }                
-            });         
+            }); 
+            $( "#subarea_id" ).change(function() {
+                var subare=$('#subarea_id').val();
+                var empres=$('#empresa_id').val();
+                var puest=$('#puesto_id');
+                var _token= $('#_token').val();
+                if(subare != '' && empres!=''){
+                    $.ajax({
+                        url:"{{ route('dynamics.fetch_areas')}}",
+                        method:"POST",
+                        data:{
+                            accion:1,
+                            valor:subare,
+                            empresa:empres,
+                            _token:_token
+                        },
+                        beforeSend: function(){
+                            puest.prop( "disabled", true );
+                          },
+                        success: function(result){
+                            puest.find('option').remove();
+                            $("#puesto_id").append(result);
+                            puest.prop( "disabled", false );
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                            puest.prop( "disabled", true );
+                        }
+                    }); 
+                }else{
+                    console.log('sin area');
+                }                
+            });
+            $( "#empresa_id" ).change(function() {
+                var subare=$('#subarea_id').val();
+                var empres=$('#empresa_id').val();
+                var puest=$('#puesto_id');
+                var conta=$('#contacto_id');
+                var _token= $('#_token').val();
+                if(empres!=''){
+                    $.ajax({
+                        url:"{{ route('dynamics.fetch_areas')}}",
+                        method:"POST",
+                        data:{
+                            accion:2,
+                            valor:empres,
+                            _token:_token
+                        },
+                        beforeSend: function(){
+                            conta.prop( "disabled", true );
+                          },
+                        success: function(result){
+                            conta.find('option').remove();
+                            $("#contacto_id").append(result);
+                            conta.prop( "disabled", false );
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                            conta.prop( "disabled", true );
+                        }
+                    }); 
+                }else{
+                    console.log('sin puesto');
+                } 
+                if(subare != '' && empres!=''){
+                    $.ajax({
+                        url:"{{ route('dynamics.fetch_areas')}}",
+                        method:"POST",
+                        data:{
+                            accion:1,
+                            valor:subare,
+                            empresa:empres,
+                            _token:_token
+                        },
+                        beforeSend: function(){
+                            puest.prop( "disabled", true );
+                          },
+                        success: function(result){
+                            puest.find('option').remove();
+                            $("#puesto_id").append(result);
+                            puest.prop( "disabled", false );
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                            puest.prop( "disabled", true );
+                        }
+                    }); 
+                }else{
+                    console.log('sin puesto');
+                }                
+            });          
         });
     </script>
 @stop

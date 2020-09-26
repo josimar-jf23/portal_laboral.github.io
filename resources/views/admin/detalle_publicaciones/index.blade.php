@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Publicaciones')
+@section('title', 'Detalles de Publicacion')
 
 @section('plugins.Fontawesome',true)
 @section('plugins.Datatables',true)
@@ -13,49 +13,41 @@
 <div class="row justify-content-center">
     <div class="card">
         <div class="card-header">
-            <h1>Publicaciones</h1>
-            <a href="{{ route('admin.publicaciones.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+            <h3> Detalles de Publicacion {{ $publicacion->puesto->nombre}} | {{ $publicacion->fecha_convocatoria}} </h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{ route('admin.detalle_publicaciones.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ route('admin.publicaciones.index')}}" class="btn btn-success float-right" style="text-align:right"><i class="fas fa-arrow-left"></i> Volver</a>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <div class="col-md-12">
                 {!! session()->get('error') !!}
             </div>
             <div class="col-md-12">
-                <table class="table table-bordered table-sm" id="table_publicaciones">
+                <table class="table table-bordered table-sm" id="table_detalle_publicaciones">
                     <thead class="thead-dark">
-                        <th>Nro</th>                        
-                        <th>Empresa</th>
-                        <th>Area</th>
-                        <th>Sub Area</th>
-                        <th>Puesto</th>
-                        <th>Contacto</th>
-                        <th>Fecha Convocatoria</th>
-                        <th>Vacante</th>
-                        <th>Sueldo</th>                        
-                        <th>Adicional</th>
-                        <th>Estado</th>
+                        <th>Nro</th>  
+                        <th>Atributo</th>                      
+                        <th>Orden</th>
                         <th></th>
                     </thead>
                     <tbody>                    
-                        @foreach ($publicaciones as $r)
+                        @foreach ($detalle_publicaciones as $r)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>                                
-                                <td>{{ $r->empresa->nombre}}</td>
-                                <td>{{ $r->puesto->subarea->area->nombre}}</td>
-                                <td>{{ $r->puesto->subarea->nombre}}</td>
-                                <td>{{ $r->puesto->nombre}}</td>
-                                <td>{{ $r->contacto->nombre}}</td>
-                                <td>{{ $r->fecha_convocatoria}}</td>
-                                <td>{{ $r->vacantes}}</td>
-                                <td>{{ $r->sueldo}}</td>
-                                <td>{{ $r->adicional}}</td>
-                                <td>{{ ($r->estado!='0')?'PUBLICADO':'BORRADOR'}}</td>
+                                <td>{{ $loop->iteration }}</td> 
+                                <td>{{ $r->caracteristica}}</td>                             
+                                <td>{{ $r->orden}}</td>
                                 <td><table class="table-sm table-borderless">
-                                    <tr> 
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.publicaciones.show',$r->id)}}"><i class='fa fa-bars'></i> Detalle</a></td>                                         
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.publicaciones.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
+                                    <tr>
+                                        <td><a class="btn-sm btn-success" href="{{ route('admin.detalle_publicaciones.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
                                         <td>
-                                            <form id="myform{{$r->id}}" action="{{ url('/admin/publicaciones', ['id' => $r->id]) }}" method="post">
+                                            <form id="myform{{$r->id}}" action="{{ url('/admin/detalle_publicaciones', ['id' => $r->id]) }}" method="post">
                                                 
                                                 <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
                                                 <input type="hidden" name="_method" value="delete" />
@@ -82,7 +74,7 @@
 
 @section('js')
     <script> 
-        $('#table_publicaciones').DataTable({
+        $('#table_detalle_publicaciones').DataTable({
             responsive : true,
             autoWidth : false,
             "language": {
