@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Sub Area')
-
+@section('title', 'Nuevo Atributo')
+@section('plugins.Ckeditor',true)
 @section('content_header')
     
 @stop
@@ -18,18 +18,19 @@
             </div>
         @endif
         <div class="card" style="width: 50rem;">
-            <card-header><h1>Editar Sub Area</h1></card-header>
+            <card-header><h1>Nueva Atributo</h1></card-header>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.subareas.update',$subarea->id) }}">
+                <form method="POST" action="{{ route('admin.detalle_publicaciones.update',$detalle_publicacion->id) }}">
                     {{ method_field('PUT') }}
                     <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
-                                     
-                    <div class="form-group row">
-                        <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre<span style="color:red">*</span></label>
-
+                    <div class="form-group row"> 
+                        <div class="col-md-4"></div>                       
                         <div class="col-md-6">
-                            <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $subarea->nombre }}" required>
-                            @error('nombre')
+                            <label for="caracteristica" class="col-form-label text-md-right">Contenido<span style="color:red">*</span></label>
+                            <textarea id="caracteristica" name="caracteristica" class="@error('caracteristica') is-invalid @enderror"  placeholder="Enter text ..." required> 
+                                {{ $detalle_publicacion->caracteristica}} 
+                            </textarea>
+                            @error('caracteristica')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -37,23 +38,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="descripcion" class="col-md-4 col-form-label text-md-right">Descripcion</label>
-
+                        <div class="col-md-4"></div>
                         <div class="col-md-6">
-                            <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ $subarea->descripcion }}">
-                            @error('descripcion')
+                            <label for="orden" class="col-form-label text-md-right">Orden</label>
+                            <input id="orden" type="text" class="form-control @error('orden') is-invalid @enderror" name="orden" value="{{ $detalle_publicacion->orden}}">
+                            @error('orden')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    </div> 
+                    </div>
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success">
                                 Agregar
                             </button>
-                            <a href="{{ route('admin.subareas.index')}}" class="btn btn-danger">Cancelar</a>
+                            <a href="{{ route('admin.detalle_publicaciones.index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -68,4 +69,22 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    
+    <script>
+        CKEDITOR.replace('caracteristica',{
+            language: 'es',
+            uiColor: '#dc3545',
+            toolbar: [
+                { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source',] },
+                { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Underline','-', 'RemoveFormat' ] },
+                { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+                { name: 'links', items: [ 'Link'] },
+                '/',
+                { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+                { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+                
+                { name: 'others', items: [ '-' ] },
+            ]
+        });
+      </script>
 @stop

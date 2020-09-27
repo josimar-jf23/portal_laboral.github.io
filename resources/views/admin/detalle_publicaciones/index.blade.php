@@ -41,10 +41,19 @@
                         @foreach ($detalle_publicaciones as $r)
                             <tr>
                                 <td>{{ $loop->iteration }}</td> 
-                                <td>{{ $r->caracteristica}}</td>                             
+                                @php 
+                                    $atributo='';
+                                    if(strlen($r->caracteristica)>100){$atributo= substr($r->caracteristica,0,100).'...';}
+                                    else{$atributo=$r->caracteristica;}
+                                @endphp
+                                <td>{{$atributo}}</td>                             
                                 <td>{{ $r->orden}}</td>
                                 <td><table class="table-sm table-borderless">
                                     <tr>
+                                        <td><input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                                            <a href="#" class="btn-sm btn-success " id="v_previos" data-valor="1" onclick="f_v_previa({{ $r->id }})">
+                                            Vista Previa
+                                        </a></td>
                                         <td><a class="btn-sm btn-success" href="{{ route('admin.detalle_publicaciones.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
                                         <td>
                                             <form id="myform{{$r->id}}" action="{{ url('/admin/detalle_publicaciones', ['id' => $r->id]) }}" method="post">
@@ -61,6 +70,22 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="vista_previa">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="v_previa_body">
+                <div class="row">
+
+                </div>
             </div>
         </div>
     </div>
@@ -99,5 +124,64 @@
                 }
             }
         });
+    </script>
+    <!--
+    <script>
+        $(function(){
+            $("#v_previos").click(function(e){
+                $("#vista_previa").modal("show");
+                var _token= $('#_token').val();
+                var id_detalle=$(this).attr( "data-valor" );
+                var cuerpo=$('#v_previa_body');
+                console.log(_token);
+                console.log(id_detalle);
+                $.ajax({
+                    url:"{{ route('admin.detalle_publicaciones.v_previa')}}",
+                    method:"POST",
+                    data:{valor:id_detalle,_token:_token},
+                    beforeSend: function(){
+                      },
+                    success: function(result){
+                        cuerpo.find('div').remove();
+                        var new_cuerpo='<div class="row"><div class="col">';
+                            new_cuerpo+=result;
+                            new_cuerpo+='</div></div>';                            
+                        $("#v_previa_body").append(new_cuerpo);
+                        console.log(new_cuerpo);
+                    },
+                    error: function(xhr,status,error){
+
+                    }
+                }); 
+              });
+        });
+    </script> -->
+    <script>
+        function f_v_previa(valor) {
+            $("#vista_previa").modal("show");
+            var _token= $('#_token').val();
+            var id_detalle=valor;
+            var cuerpo=$('#v_previa_body');
+            console.log(_token);
+            console.log(id_detalle);
+            $.ajax({
+                url:"{{ route('admin.detalle_publicaciones.v_previa')}}",
+                method:"POST",
+                data:{valor:id_detalle,_token:_token},
+                beforeSend: function(){
+                    },
+                success: function(result){
+                    cuerpo.find('div').remove();
+                    var new_cuerpo='<div class="row"><div class="col">';
+                        new_cuerpo+=result;
+                        new_cuerpo+='</div></div>';                            
+                    $("#v_previa_body").append(new_cuerpo);
+                    console.log(new_cuerpo);
+                },
+                error: function(xhr,status,error){
+
+                }
+            }); 
+          }
     </script>
 @stop
