@@ -48,7 +48,12 @@
                                 <td>{{ $r->fecha_convocatoria}}</td>
                                 <td>{{ $r->vacantes}}</td>
                                 <td>{{ $r->sueldo}}</td>
-                                <td>{{ $r->adicional}}</td>
+                                @php 
+                                    $adicional='';
+                                    if(strlen($r->adicional)>20){$adicional= substr($r->adicional,0,20).'...';}
+                                    else{$adicional=$r->adicional;}
+                                @endphp
+                                <td>{{$adicional}}</td>
                                 <td>{{ ($r->estado!='0')?'PUBLICADO':'BORRADOR'}}</td>
                                 <td><table class="table-sm table-borderless">
                                     <tr> 
