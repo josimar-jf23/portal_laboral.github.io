@@ -58,7 +58,7 @@
                                 <td><table class="table-sm table-borderless">
                                     <tr> 
                                         
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.publicaciones.show',$r->id)}}"><i class='fa fa-bars'></i> Detalle</a></td>
+                                        <td><a class="btn-sm btn-success" href="{{ route('admin.publicaciones.show',$r->id)}}"><i class='fa fa-bars'></i></a></td>
                                         <td>
                                             <form method="POST" id="myformcambiar{{$r->id}}" action="{{ route('admin.publicaciones.cambiar_estado',$r->id) }}">
                                                 <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myformcambiar{{$r->id}}').submit()"><i class='fas fa-exchange-alt'></i></a>
