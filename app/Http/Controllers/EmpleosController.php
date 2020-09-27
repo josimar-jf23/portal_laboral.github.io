@@ -8,7 +8,7 @@ use App\Publicacion;
 class EmpleosController extends Controller
 {
     public function index(){
-        $empleos=Publicacion::where('estado','1')->paginate(6);
+        $empleos=Publicacion::where('estado','1')->orderBy('id', 'desc')->paginate(6);
         //dd($usuarios->paises);
         return view('empleos.index',compact('empleos'));
     }
