@@ -35,6 +35,9 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','preventBackHistory']], 
     
 });
 Auth::routes();
+//publicos
+Route::resource('/empleos', 'EmpleosController');
+//Route::get('/empleos', 'EmpleosController@index')->name('empleos.index');
 Route::post('/dynamics/fetch','PaisDepartamentoCiudadController@fetch')->name('dynamics.fetch');
 Route::post('/dynamics/fetch_areas','PaisDepartamentoCiudadController@fetch_areas')->name('dynamics.fetch_areas');
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('title', 'Nueva Publicacion')
-
+@section('plugins.Select2',true)
 @section('content_header')
     
 @stop
@@ -25,7 +25,7 @@
                     <div class="form-group row">
                         <label for="empresa_id" class="col-md-4 col-form-label text-md-right">Empresa<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="empresa_id" name="empresa_id" required>
+                            <select class="form-control select2-selection__rendered" id="empresa_id" name="empresa_id" required>
                                 <option value="" selected>Seleccionar</option>
                                 @foreach ($empresas as $r)
                                     <option value="{{ $r->id}}">{{ $r->nombre}}</option>
@@ -36,7 +36,7 @@
                     <div class="form-group row">
                         <label for="area_id" class="col-md-4 col-form-label text-md-right">Area<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="area_id" name="pais_id" required>
+                            <select class="form-control select2-selection__rendered" id="area_id" name="pais_id" required>
                                 <option value="" selected>Seleccionar</option>
                                 @foreach ($areas as $r)
                                     <option value="{{ $r->id}}">{{ $r->nombre}}</option>
@@ -47,7 +47,7 @@
                     <div class="form-group row">
                         <label for="subarea_id" class="col-md-4 col-form-label text-md-right">Sub Area<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="subarea_id" name="subarea_id" required>
+                            <select class="form-control select2-selection__rendered" id="subarea_id" name="subarea_id" required>
                                 <option value="" selected>Seleccionar</option>
                             </select>
                         </div>                       
@@ -55,7 +55,7 @@
                     <div class="form-group row">
                         <label for="puesto_id" class="col-md-4 col-form-label text-md-right">Puesto<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="puesto_id" name="puesto_id" required>
+                            <select class="form-control select2-selection__rendered" id="puesto_id" name="puesto_id" required>
                                 <option value="" selected>Seleccionar</option>
                             </select>
                         </div>                       
@@ -63,7 +63,7 @@
                     <div class="form-group row">
                         <label for="contacto_id" class="col-md-4 col-form-label text-md-right">Contacto<span style="color:red">*</span></label>
                         <div class="col-md-6">                      
-                            <select class="form-control" id="contacto_id" name="contacto_id" required>
+                            <select class="form-control select2-selection__rendered" id="contacto_id" name="contacto_id" required>
                                 <option value="" selected>Seleccionar</option>
                             </select>
                         </div>                       
@@ -121,12 +121,20 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+        .select2-container--default, .select2-selection--single, .select2-selection__rendered 
+        {
+            color: black ;
+        }
+    </style>
 @stop
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    
     <script>
         $(function(){
+            $('select').select2({ minimumResultsForSearch: 4 });
             $( "#area_id" ).change(function() {
                 var area=$('#area_id').val();
                 var subarea=$('#subarea_id');
