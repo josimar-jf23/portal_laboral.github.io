@@ -15,7 +15,7 @@ use Session;
 class PublicacionesController extends Controller
 {
     public function index(){
-        $publicaciones=Publicacion::all();
+        $publicaciones=Publicacion::all()->sortByDesc('estado');
         //dd($usuarios->paises);
         return view('admin.publicaciones.index',compact('publicaciones'));
     }
@@ -77,6 +77,13 @@ class PublicacionesController extends Controller
             'contacto_id' => 'required'
         ]);
         $publicacion->fill($request);
+        $publicacion->save();
+        return redirect()->route('admin.publicaciones.index');
+        //dd($request);
+    }
+    public function cambiar_estado($id){
+        $publicacion=Publicacion::findOrFail($id);
+        $publicacion->estado=($publicacion->estado=='1')?'0':'1';
         $publicacion->save();
         return redirect()->route('admin.publicaciones.index');
         //dd($request);

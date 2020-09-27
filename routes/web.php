@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','preventBackHistory']], 
     Route::resource('/suscriptores', 'Admin\SuscriptoresController',['as'=>'admin']);
     Route::post('/detalle_publicaciones/v_previa', 'Admin\Detalle_PublicacionesController@v_previa')->name('admin.detalle_publicaciones.v_previa'); 
     Route::resource('/detalle_publicaciones', 'Admin\Detalle_PublicacionesController',['as'=>'admin']);
+    Route::match(['put', 'patch'],'/publicaciones/cambiar_estado/{publicacione}', 'Admin\PublicacionesController@cambiar_estado')->name('admin.publicaciones.cambiar_estado');
+    //Route::put('/publicaciones/cambiar_estado', 'Admin\Detalle_PublicacionesController@cambiar_estado')->name('admin.publicaciones.cambiar_estado'); 
     Route::resource('/publicaciones', 'Admin\PublicacionesController',['as'=>'admin']);
     //Route::resource('/portadas', 'Admin\PortadasController',['as'=>'admin']);
     

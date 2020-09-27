@@ -42,8 +42,9 @@
                         </div>
                     </div>
                 </div>
-            @endforeach 
-            {{ $empleos->links() }}            
+            @endforeach            
     </div>
+    <div class="row justify-content-center">{{ $empleos->links() }}</div>
+    
 </div>
 @endsection
