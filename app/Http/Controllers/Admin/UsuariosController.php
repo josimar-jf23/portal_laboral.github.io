@@ -58,7 +58,7 @@ class UsuariosController extends Controller
         ]);
         $user->fill($request->all());
         //dd($user);
-        $user->estado=($request->estado!='')?'1':'0';
+        //$user->estado=($request->estado!='')?'1':'0';
         /*
         if($request->estado){
             $user->estado=1;

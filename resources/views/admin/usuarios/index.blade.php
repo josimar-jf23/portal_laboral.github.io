@@ -26,7 +26,7 @@
                         <th>Celular</th>
                         <th>Tipo</th>
                         <th>Empresa</th>
-                        <th>Estado</th>
+                        <!--<th>Estado</th>-->
                         <th></th>
                     </thead>
                     <tbody>
@@ -39,7 +39,7 @@
                                 <td>{{ $r->celular}}</td>
                                 <td>{{ $r->tipo=='0'?'Cliente':'Admin'}}</td>
                                 <td>{{ $r->empresa->nombre}}</td>
-                                <td>{{ $r->estado=='0'?'Inactivo':'Activo'}}</td>
+                                <!--<td>{{ $r->estado=='0'?'Inactivo':'Activo'}}</td>-->
                                 <td><table class="table-sm table-borderless">
                                     <tr>                                        
                                         <td><a class="btn-sm btn-success" href="{{ route('admin.usuarios.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>

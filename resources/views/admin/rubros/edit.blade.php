@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="descripcion" class="col-md-4 col-form-label text-md-right">Descripcion<span style="color:red">*</span></label>
+                        <label for="descripcion" class="col-md-4 col-form-label text-md-right">Descripcion</label>
 
                         <div class="col-md-6">
                             <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ $rubro->descripcion }}" >

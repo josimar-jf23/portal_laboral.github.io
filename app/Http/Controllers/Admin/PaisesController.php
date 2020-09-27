@@ -46,10 +46,11 @@ class PaisesController extends Controller
     public function update(Request $request,$id){
         $pais=Pais::findOrFail($id);
         $request->validate([
-            'abrev' => 'required|max:10|unique:paises,abrev'.$pais->id,
-            'nombre' => 'required|unique:paises,nombre'.$pais->id
+            'abrev' => 'required|max:10|unique:paises,abrev,'.$pais->id,
+            'nombre' => 'required|unique:paises,nombre,'.$pais->id
         ]);
-        $pais->fill($request);
+        $pais->abrev=$request->abrev;
+        $pais->nombre=$request->nombre;
         $pais->save();
         return redirect()->route('admin.paises.index');
         //dd($request);

@@ -48,11 +48,11 @@ class AreasController extends Controller
     public function update(Request $request,$id){
         $area=Area::findOrFail($id);
         $request->validate([
-            'nombre' => 'required|unique:areas,nombre'.$area->id
+            'nombre' => 'required|unique:areas,nombre,'.$area->id
         ]);
-        $pais->fill($request);
-        $pais->save();
-        return redirect()->route('admin.paises.index');
+        $area->nombre=$request->nombre;
+        $area->save();
+        return redirect()->route('admin.areas.index');
         //dd($request);
     }
     public function destroy($id)

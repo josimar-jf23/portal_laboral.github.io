@@ -48,7 +48,7 @@ class SubAreasController extends Controller
         $request->validate([
             'nombre' => 'required'
         ]);
-        $subarea->fill($request);
+        $subarea->nombre=$request->nombre;
         $subarea->save();
         return redirect()->route('admin.subareas.index');
         //dd($request);

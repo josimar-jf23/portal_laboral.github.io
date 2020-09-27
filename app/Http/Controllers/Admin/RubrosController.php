@@ -40,9 +40,12 @@ class RubrosController extends Controller
     public function update(Request $request,$id){
         $rubro=Rubro::findOrFail($id);
         $request->validate([
-            'nombre' => 'required|unique:rubros,nombre'.$rubro->id
+            'nombre' => 'required|unique:rubros,nombre,'.$rubro->id
         ]);
-        $rubro->fill($request);
+        //dd($request);
+        $rubro->nombre=$request->nombre;
+        $rubro->descripcion=$request->descripcion;
+        $rubro->estado=$request->estado;
         $rubro->save();
         return redirect()->route('admin.rubros.index');
         //dd($request);

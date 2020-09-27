@@ -62,10 +62,6 @@
                             </select>
                         </div>                       
                     </div>
-                    <div class="form-group row">            
-                        <label class="col-md-4 col-form-label text-md-right" for="estado" >Activar</label>
-                        <input type="checkbox" id="estado" name="estado" {{ $usuario->estado=='1'?'checked':'' }}>
-                      </div>
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success">
