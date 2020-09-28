@@ -27,9 +27,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $events)
     {
+        if(env('APP_ENV')!=='local'){
+            URL::forceScheme('https');
+        }
+        /*
         if (App::environment('production')) {
             URL::forceScheme('https');
         }
+        */
         //
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $event->menu->add(['header' => 'MAIN NAVIGATION']);
