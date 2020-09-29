@@ -8,6 +8,41 @@
 @section('content')
 
 <div class="container">
+    <div class="col">
+        <form method="GET" action="{{ route('empleos.index') }}">
+            <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
+            <div class="form-group row">
+                <div class="col-md-3">
+                    <label for="puesto_id" class="col-form-label text-md-right">Puestos</label>
+                    <select class="form-control" id="puesto_id" name="puesto_id">
+                        <option value="" selected>Seleccionar</option>
+                        @foreach ($puestos as $r)
+                            <option value="{{ $r->id}}" {{ ($puesto_id==$r->id) ? 'selected' : '' }}>{{ $r->nombre}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="empresa_id" class="col-form-label text-md-right">Empresas</label>
+                    <select class="form-control" id="empresa_id" name="empresa_id">
+                        <option value="" selected>Seleccionar</option>
+                        @foreach ($empresas as $r)
+                            <option value="{{ $r->id}}" {{ ($empresa_id==$r->id) ? 'selected' : '' }}>{{ $r->nombre}}</option>
+                        @endforeach
+                    </select>
+                    
+                </div>
+                <div class="col-md-3">
+                    <label for="fecha_convocatoria" class="col-form-label text-md-right">Fecha Convocatoria</label>
+                    <input id="fecha_convocatoria" type="date" value="{{$fecha_convocatoria}}" class="form-control" name="fecha_convocatoria"> 
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-success">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
     @if(Session::has('flash_message'))
         <div class="row justify-content-center">
             <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>
@@ -33,7 +68,7 @@
                         <div class="card-header">
                             <a href="#" class="btn btn-success float-right" style="text-align:right" data-toggle="tooltip" title="Postular!" onclick="suscripcion({{ $r->id }})"><i class="fas fa-thumbs-up"></i></a>
                             <h2><strong>Puesto:</strong>{{ $r->puesto->nombre}}</h2>
-                            <strong>Fecha Convocatoria:</strong> {{ $r->fecha_convocatoria }}
+                            <strong>Fecha Convocatoria:</strong> {{ date('d / m / Y',strtotime($r->fecha_convocatoria)) }}
                         </div>
                         <div class="card-body">
                             <p><strong>Empresa:</strong>{{ $r->empresa->nombre}}<br>

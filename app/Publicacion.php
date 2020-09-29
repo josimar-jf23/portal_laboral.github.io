@@ -27,4 +27,19 @@ class Publicacion extends Model
     public function suscriptores(){
         return $this->hasMany(Suscriptor::class);
     }
+    public function scopePuesto_id($query,$puesto_id){
+        if($puesto_id){
+            return $query->where('puesto_id','=',$puesto_id);
+        }
+    }
+    public function scopeEmpresa_id($query,$empresa_id){
+        if($empresa_id){
+            return $query->where('empresa_id','=',$empresa_id);
+        }
+    }
+    public function scopeFecha_convocatoria($query,$fecha_convocatoria){
+        if($fecha_convocatoria){
+            return $query->where('fecha_convocatoria','=',$fecha_convocatoria);
+        }
+    }
 }
