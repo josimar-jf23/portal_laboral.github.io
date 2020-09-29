@@ -67,9 +67,10 @@ class EmpresasController extends Controller
             'ciudad_id' => 'required',
             'rubro_id' => 'required'
         ]);
-        $request=$request->except('pais_id','departamento_id');
-        $empresa->fill($request);
-        $empresa->save();
+        //$request=$request->except('pais_id','departamento_id');
+        $empresa->update($request->all());
+        //$empresa->fill($request->all());
+        //$empresa->save();
         return redirect()->route('admin.empresas.index');
         //dd($request);
     }

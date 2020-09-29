@@ -76,8 +76,9 @@ class PublicacionesController extends Controller
             'puesto_id' => 'required',
             'contacto_id' => 'required'
         ]);
-        $publicacion->fill($request);
-        $publicacion->save();
+        $publicacion->update($request->all());
+        //$publicacion->fill($request);
+        //$publicacion->save();
         return redirect()->route('admin.publicaciones.index');
         //dd($request);
     }
