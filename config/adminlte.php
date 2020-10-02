@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Portal</b> Laboral',
+    'logo' => '<b>Labor</b> Agro',
     //'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img' => 'logos/logo.png',
     'logo_img_class' => 'brand-image img-rounded elevation-3',
