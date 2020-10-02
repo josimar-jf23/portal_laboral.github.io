@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Publicacion;
 use App\Empresa;
 use App\Puesto;
+use Illuminate\Support\Facades\DB;
 
 class EmpleosController extends Controller
 {
@@ -21,7 +22,9 @@ class EmpleosController extends Controller
                 ->fecha_convocatoria($fecha_convocatoria)
                 ->paginate(6)
                 ->setPath(route('empleos.index'));
-        $puestos=Puesto::all();
+        //$puestos=Puesto::all();
+        $puestos=DB::table('publicaciones')->select('publicaciones.puesto_id as id','puestos.nombre')->distinct() ->leftJoin('puestos', 'publicaciones.puesto_id', '=', 'puestos.id')->get();
+        //dd($puestos);
         $empresas=Empresa::all();
         return view('empleos.index',compact('empleos','puestos','empresas','fecha_convocatoria','puesto_id','empresa_id'));
     }
