@@ -19,7 +19,8 @@ class EmpleosController extends Controller
                 ->puesto_id($puesto_id)
                 ->empresa_id($empresa_id)
                 ->fecha_convocatoria($fecha_convocatoria)
-                ->paginate(6);
+                ->paginate(6)
+                ->setPath(route('empleos.index'));
         $puestos=Puesto::all();
         $empresas=Empresa::all();
         return view('empleos.index',compact('empleos','puestos','empresas','fecha_convocatoria','puesto_id','empresa_id'));
