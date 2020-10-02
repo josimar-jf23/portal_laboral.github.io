@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-fixed-top navbar-light bg-white shadow-sm" style="background-color: #e3f2fd;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <b>Labor</b> Agro
+                    <span style="font-size: 2em;"><b>Labor</b> Agro</span> 
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
                             <a class="nav-link" href="{{ route('empleos.index')}}">Empleos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <!--<a class="nav-link" href="#">Contacto</a>-->
                         </li>
                         @guest
                             <li class="nav-item">
