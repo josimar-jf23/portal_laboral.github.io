@@ -72,7 +72,7 @@
     </div>
     <div class="row justify-content-center">    
         <div class="col-12; text-align: center;">
-            <span class="text-large" style="color:#000000;text-align: center;">Te damos la bienvenida a <strong>Labor</strong> Agro</span>
+            <p class="text-large" style="color:#000000;text-align: center;">Te damos la bienvenida a <strong>Labor</strong> Agro</p>
         </div>
     </div>
     
@@ -154,7 +154,7 @@
     </div>
     <div class="row justify-content-center"> 
         
-        <div class="col-md-2">s</div>
+        <div class="col-md-2"></div>
         <div class="col-md-8" style="text-align: center;">
             <div class="row">
                 <div class="col">
@@ -180,7 +180,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2">s</div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 @endsection
