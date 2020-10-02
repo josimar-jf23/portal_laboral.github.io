@@ -63,7 +63,7 @@
             <img src="{{asset('imagenes/carrusel/uvas2.jpg')}}" alt="uvas 2" width="100%" height="500px">
             <div class="texto-encima">
             </div>
-            <div class="centrado"><span class="text-xlarge">Te ayudamos a encontrar el trabajo adecuado, muchas empresas necesitan de tu talento</span></div>
+            <div class="centrado"><span class="text-large">Te ayudamos a encontrar el trabajo adecuado, muchas empresas necesitan de tu talento</span></div>
         </div>        
     </div>
     <div class="row justify-content-center">    
@@ -119,9 +119,9 @@
                     <div class="col-md-12">
                         <p class="text-medium" style="color:#ffffff">SI TE ENCUENTRAS DENTRO DEL RUBRO DE PEQUEÑA, MEDIANA O GRAN EMPRESA PUBLICA TUS OFERTAS LABORALES CON NOSOTROS.</p>
                         <div class="row">
-                            <div class="col-md-4"><img src="{{asset('imagenes/carrusel/agrokasa.png')}}" alt="uvas" width="100px" height="100px" style="filter: contrast(200%);"></div>
-                            <div class="col-md-4"><img src="{{asset('imagenes/carrusel/don_ricardo.png')}}" alt="uvas" width="100px" height="100px" style="filter: contrast(200%);"></div>
-                            <div class="col-md-4"><img src="{{asset('imagenes/carrusel/rvr-agro.png')}}" alt="uvas" width="100px" height="100px" style="filter: contrast(200%);"></div>
+                            <div class="col-xs-4 col-md-4"><img src="{{asset('imagenes/carrusel/agrokasa.png')}}" alt="uvas" width="100px" height="100px" style="filter: contrast(200%);"></div>
+                            <div class="col-xs-4 col-md-4"><img src="{{asset('imagenes/carrusel/don_ricardo.png')}}" alt="uvas" width="100px" height="100px" style="filter: contrast(200%);"></div>
+                            <div class="col-xs-4 col-md-4"><img src="{{asset('imagenes/carrusel/rvr-agro.png')}}" alt="uvas" width="100px" height="100px" style="filter: contrast(200%);"></div>
                         </div>
                     </div>                    
                 </div>
