@@ -27,6 +27,9 @@ class Publicacion extends Model
     public function suscriptores(){
         return $this->hasMany(Suscriptor::class);
     }
+    public function visitantes(){
+        return $this->hasMany(Visitante::class);
+    }
     public function scopePuesto_id($query,$puesto_id){
         if($puesto_id){
             return $query->where('puesto_id','=',$puesto_id);
@@ -42,4 +45,5 @@ class Publicacion extends Model
             return $query->where('fecha_convocatoria','=',$fecha_convocatoria);
         }
     }
+    
 }

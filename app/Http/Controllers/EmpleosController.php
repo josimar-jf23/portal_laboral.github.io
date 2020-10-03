@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Publicacion;
 use App\Empresa;
 use App\Puesto;
+use App\Visitante;
 use Illuminate\Support\Facades\DB;
 
 class EmpleosController extends Controller
@@ -32,6 +33,16 @@ class EmpleosController extends Controller
     {
         //dd($id);
         $empleo=Publicacion::where('id',$id)->first();
+        if(Visitante::where('publicacion_id',$id)->exists()){
+            $visitante=Visitante::where('publicacion_id',$id)->first();
+            $visitante->contador=($visitante->contador)+1;
+            $visitante->save();
+        }else{
+            $visitante=new Visitante();
+            $visitante->contador='1';
+            $visitante->publicacion_id=$id;
+            $visitante->save();
+        }
         return view('empleos.show',compact('empleo'));
     }
 }

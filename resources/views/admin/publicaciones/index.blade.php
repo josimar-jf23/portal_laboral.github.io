@@ -31,7 +31,9 @@
                         <th>Contacto</th>
                         <th>Fecha Convocatoria</th>
                         <th>Vacante</th>
-                        <th>Sueldo</th>                        
+                        <th>Sueldo</th> 
+                        <th>Visitas</th>
+                        <th>Suscriptores</th>                        
                         <th>Adicional</th>
                         <th>Estado</th>
                         <th></th>
@@ -48,6 +50,12 @@
                                 <td>{{ $r->fecha_convocatoria}}</td>
                                 <td>{{ $r->vacantes}}</td>
                                 <td>{{ $r->sueldo}}</td>
+                                <td>
+                                @foreach ($r->visitantes as $v)
+                                    {{ $v->contador }}
+                                @endforeach  
+                                </td> 
+                                <td>{{(count($r->suscriptores)!=0)?count($r->suscriptores):'' }}</td>                             
                                 @php 
                                     $adicional='';
                                     if(strlen($r->adicional)>20){$adicional= substr($r->adicional,0,20).'...';}
@@ -56,21 +64,20 @@
                                 <td>{{$adicional}}</td>
                                 <td>{{ ($r->estado!='0')?'PUBLICADO':'BORRADOR'}}</td>
                                 <td><table class="table-sm table-borderless">
-                                    <tr> 
-                                        
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.publicaciones.show',$r->id)}}"><i class='fa fa-bars'></i></a></td>
+                                    <tr>                                     
                                         <td>
                                             <form method="POST" id="myformcambiar{{$r->id}}" action="{{ route('admin.publicaciones.cambiar_estado',$r->id) }}">
-                                                <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myformcambiar{{$r->id}}').submit()"><i class='fas fa-exchange-alt'></i></a>
+                                                <a href="#" class="btn-sm btn-warning" title="{{ ($r->estado!='0')?'Ocultar':'Publicar'}}" onclick="document.getElementById('myformcambiar{{$r->id}}').submit()"><i class='fas fa-exchange-alt'></i></a>
                                                 <input type="hidden" name="_method" value="put" />
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             </form>                            
-                                        </td>                                        
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.publicaciones.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
+                                        </td> 
+                                        <td><a class="btn-sm btn-primary" title="Detalles" href="{{ route('admin.publicaciones.show',$r->id)}}"><i class='fa fa-bars'></i></a></td>                                      
+                                        <td><a class="btn-sm btn-success" title="Editar" href="{{ route('admin.publicaciones.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
                                         <td>
                                             <form id="myform{{$r->id}}" action="{{ url('/admin/publicaciones', ['id' => $r->id]) }}" method="post">
                                                 
-                                                <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
+                                                <a href="#" class="btn-sm btn-danger" title="Eliminar" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
                                                 <input type="hidden" name="_method" value="delete" />
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             </form>

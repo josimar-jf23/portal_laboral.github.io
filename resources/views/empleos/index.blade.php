@@ -3,6 +3,23 @@
 @section('css_part')
 
 <link rel="stylesheet" href="{{ asset('/vendor/fontawesome-free/css/all.min.css')}}">
+
+<style>
+    .card{
+        border-radius: 2px;
+        background: #fff;
+        box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+          transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+      padding: 1px 1px 1px 1px;
+      cursor: pointer;
+    }
+    
+    .card:hover{
+         transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+    
+</style>
 @endsection
 
 @section('content')
@@ -36,10 +53,11 @@
                         <label for="fecha_convocatoria" class="col-form-label text-md-right">Fecha Convocatoria</label>
                         <input id="fecha_convocatoria" type="date" value="{{$fecha_convocatoria}}" class="form-control" name="fecha_convocatoria"> 
                     </div>
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-success">
+                    <div class="col-md-3" style="display: flex;justify-content: flex-start; align-items: flex-end;height: auto; ">
+                        <button type="submit" class="btn btn-success" title="Buscar">
                             Buscar
                         </button>
+                                              
                     </div>
                 </div>
             </form>
@@ -63,12 +81,14 @@
             </div>
         </div>
     @endif
-    <div class="row justify-content-center">        
+    <div class="row justify-content-center">  
+        <div class="card-columns">
         @foreach ($empleos as $r)
-                <div class="col-md-4">
-                    <div class="card">
+                <!--<div class="col-sm-4"> -->               
+                    <div class="card" >
                         <div class="card-header">
-                            <a href="#" class="btn btn-success float-right" style="text-align:right" data-toggle="tooltip" title="Postular!" onclick="suscripcion({{ $r->id }})"><i class="fas fa-thumbs-up"></i></a>
+                            <!--<a href="#" class="btn btn-success float-right" style="text-align:right" data-toggle="tooltip" title="Postular!" onclick="suscripcion({{ $r->id }})"><i class="fas fa-thumbs-up"></i></a>-->
+                            <a href="#" class="btn btn-success float-right" style="text-align:right" title="Postular!" onclick="suscripcion({{ $r->id }})"><i class="fas fa-thumbs-up"></i></a>
                             <h2><strong>Puesto:</strong>{{ $r->puesto->nombre}}</h2>
                             <strong>Fecha Convocatoria:</strong> {{ date('d / m / Y',strtotime($r->fecha_convocatoria)) }}
                         </div>
@@ -89,8 +109,9 @@
                             <p>{{ $r->adicional }}</p>
                         </div>
                     </div>
-                </div>
-            @endforeach            
+                <!-- </div>-->
+            @endforeach   
+        </div>         
     </div>
     <div class="row justify-content-center">{{ $empleos->links() }}</div>
     
@@ -110,7 +131,7 @@
                         <label for="nombres" class="col-md-4 col-form-label text-md-right">Nombres<span style="color:red">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="nombres" type="text" class="form-control @error('nombres') is-invalid @enderror" name="nombres" value="" required>
+                            <input id="nombres" type="text" class="form-control @error('nombres') is-invalid @enderror" name="nombres" value="" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode === 39)" required>
                             @error('nombres')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -122,7 +143,7 @@
                         <label for="apellidos" class="col-md-4 col-form-label text-md-right">Apellidos <span style="color:red">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="apellidos" type="text" class="form-control @error('apellidos') is-invalid @enderror" name="apellidos" value="" required>
+                            <input id="apellidos" type="text" class="form-control @error('apellidos') is-invalid @enderror" name="apellidos" value="" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" required>
                             @error('apellidos')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

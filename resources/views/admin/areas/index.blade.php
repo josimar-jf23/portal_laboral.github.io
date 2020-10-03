@@ -36,12 +36,12 @@
                                 <td>{{ $r->descripcion}}</td>
                                 <td><table class="table-sm table-borderless">
                                     <tr> 
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.areas.show',$r->id)}}"><i class='fa fa-bars'></i> Sub</a></td>                                        
-                                        <td><a class="btn-sm btn-success" href="{{ route('admin.areas.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
+                                        <td><a class="btn-sm btn-primary" title="Sub Areas" href="{{ route('admin.areas.show',$r->id)}}"><i class='fa fa-bars'></i> Sub</a></td>                                        
+                                        <td><a class="btn-sm btn-success" title="Editar" href="{{ route('admin.areas.edit',$r->id)}}"><i class='fas fa-edit'></i></a></td>
                                         <td>
                                             <form id="myform{{$r->id}}" action="{{ url('/admin/areas', ['id' => $r->id]) }}" method="post">
                                                 
-                                                <a href="#" class="btn-sm btn-danger" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
+                                                <a href="#" class="btn-sm btn-danger" title="Borrar" onclick="document.getElementById('myform{{$r->id}}').submit()"><i class='fas fa-trash'></i></a>
                                                 <input type="hidden" name="_method" value="delete" />
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             </form>
