@@ -13,7 +13,16 @@
 <div class="row justify-content-center">
     <div class="card">
         <div class="card-header">
-            <h1>Suscripciones</h1>
+            <h3> Suscripciones de {{ $publicacion->puesto->nombre}} | {{ $publicacion->fecha_convocatoria}} </h3>
+            <div class="row">
+                <div class="col-md-4">                   
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ route('admin.publicaciones.index')}}" class="btn btn-success float-right" style="text-align:right"><i class="fas fa-arrow-left"></i> Volver</a>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <div class="col-md-12">

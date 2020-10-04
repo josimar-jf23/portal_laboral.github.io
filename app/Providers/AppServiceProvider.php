@@ -68,11 +68,13 @@ class AppServiceProvider extends ServiceProvider
                 'route'     => 'admin.puestos.index',
                 'icon'      => 'fa fa-fw fa-briefcase',
             ]);
+            /*
             $event->menu->add([
                 'text'        => 'Suscriptores',
                 'route'     => 'admin.suscriptores.index',
                 'icon'        => 'fa fa-fw fa-handshake',
             ]);
+            */
             $event->menu->add([
                 'text'        => 'Publicaciones',
                 'route'       => 'admin.publicaciones.index',

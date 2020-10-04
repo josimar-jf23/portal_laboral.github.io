@@ -27,9 +27,10 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','preventBackHistory']], 
     Route::resource('/rubros', 'Admin\RubrosController',['as'=>'admin']);
     Route::resource('/contactos', 'Admin\ContactosController',['as'=>'admin']);
     Route::resource('/puestos', 'Admin\PuestosController',['as'=>'admin']);
-    Route::resource('/suscriptores', 'Admin\SuscriptoresController',['as'=>'admin']);
+    Route::resource('/suscriptores', 'Admin\SuscriptoresController',['as'=>'admin']);        
     Route::post('/detalle_publicaciones/v_previa', 'Admin\Detalle_PublicacionesController@v_previa')->name('admin.detalle_publicaciones.v_previa'); 
     Route::resource('/detalle_publicaciones', 'Admin\Detalle_PublicacionesController',['as'=>'admin']);
+    Route::get('/publicaciones/show_suscriptores/{publicacione}', 'Admin\PublicacionesController@show_suscriptores')->name('admin.publicaciones.show_suscriptores'); 
     Route::match(['put', 'patch'],'/publicaciones/cambiar_estado/{publicacione}', 'Admin\PublicacionesController@cambiar_estado')->name('admin.publicaciones.cambiar_estado');
     //Route::put('/publicaciones/cambiar_estado', 'Admin\Detalle_PublicacionesController@cambiar_estado')->name('admin.publicaciones.cambiar_estado'); 
     Route::resource('/publicaciones', 'Admin\PublicacionesController',['as'=>'admin']);

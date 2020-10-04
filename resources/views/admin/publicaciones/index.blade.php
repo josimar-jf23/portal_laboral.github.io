@@ -28,13 +28,13 @@
                         <th>Area</th>
                         <th>Sub Area</th>
                         <th>Puesto</th>
-                        <th>Contacto</th>
+                        <!--<th>Contacto</th>-->
                         <th>Fecha Convocatoria</th>
                         <th>Vacante</th>
-                        <th>Sueldo</th> 
+                        <!--<th>Sueldo</th> -->
                         <th>Visitas</th>
                         <th>Suscriptores</th>                        
-                        <th>Adicional</th>
+                        <!--<th>Adicional</th>-->
                         <th>Estado</th>
                         <th></th>
                     </thead>
@@ -46,10 +46,10 @@
                                 <td>{{ $r->puesto->subarea->area->nombre}}</td>
                                 <td>{{ $r->puesto->subarea->nombre}}</td>
                                 <td>{{ $r->puesto->nombre}}</td>
-                                <td>{{ $r->contacto->nombre}}</td>
+                                <!--<td>{{ $r->contacto->nombre}}</td>-->
                                 <td>{{ $r->fecha_convocatoria}}</td>
                                 <td>{{ $r->vacantes}}</td>
-                                <td>{{ $r->sueldo}}</td>
+                                <!--<td>{{ $r->sueldo}}</td>-->
                                 <td>
                                 @foreach ($r->visitantes as $v)
                                     {{ $v->contador }}
@@ -61,10 +61,11 @@
                                     if(strlen($r->adicional)>20){$adicional= substr($r->adicional,0,20).'...';}
                                     else{$adicional=$r->adicional;}
                                 @endphp
-                                <td>{{$adicional}}</td>
+                                <!--<td>{{$adicional}}</td>-->
                                 <td>{{ ($r->estado!='0')?'PUBLICADO':'BORRADOR'}}</td>
                                 <td><table class="table-sm table-borderless">
-                                    <tr>                                     
+                                    <tr> 
+                                        <td><a class="btn-sm btn-dark" title="Suscriptores" href="{{ route('admin.publicaciones.show_suscriptores',$r->id)}}"><i class='fa fa-fw fa-handshake '></i></a></td>                                   
                                         <td>
                                             <form method="POST" id="myformcambiar{{$r->id}}" action="{{ route('admin.publicaciones.cambiar_estado',$r->id) }}">
                                                 <a href="#" class="btn-sm btn-warning" title="{{ ($r->estado!='0')?'Ocultar':'Publicar'}}" onclick="document.getElementById('myformcambiar{{$r->id}}').submit()"><i class='fas fa-exchange-alt'></i></a>

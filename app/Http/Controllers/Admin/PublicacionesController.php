@@ -24,6 +24,12 @@ class PublicacionesController extends Controller
         Session::put('publicacion_id',$id);
         return redirect('/admin/detalle_publicaciones');
     }
+    public function show_suscriptores($id)
+    {
+        
+        Session::put('publicacion_id',$id);
+        return redirect('/admin/suscriptores');
+    }
     public function create()
     {
         $empresas=Empresa::all();

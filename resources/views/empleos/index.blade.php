@@ -84,11 +84,11 @@
     <div class="row justify-content-center">  
         <div class="card-columns">
         @foreach ($empleos as $r)
-                <!--<div class="col-sm-4"> -->               
+                <!--<div class="col-md-4"> -->               
                     <div class="card" >
                         <div class="card-header">
                             <!--<a href="#" class="btn btn-success float-right" style="text-align:right" data-toggle="tooltip" title="Postular!" onclick="suscripcion({{ $r->id }})"><i class="fas fa-thumbs-up"></i></a>-->
-                            <a href="#" class="btn btn-success float-right" style="text-align:right" title="Postular!" onclick="suscripcion({{ $r->id }})"><i class="fas fa-thumbs-up"></i></a>
+                            <a href="#" class="btn btn-success float-right" style="text-align:right" title="Postular!" onclick="suscripcion({{ $r->id }})">Postular</a>
                             <h2><strong>Puesto:</strong>{{ $r->puesto->nombre}}</h2>
                             <strong>Fecha Convocatoria:</strong> {{ date('d / m / Y',strtotime($r->fecha_convocatoria)) }}
                         </div>
