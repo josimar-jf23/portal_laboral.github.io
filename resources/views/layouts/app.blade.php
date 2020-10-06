@@ -6,7 +6,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta property="og:url"           content="{{ URL::to('/')}}" />
+    <meta property="og:type"          content="website" />
+    @yield('meta_part')
+    <meta property="og:image"         content="{{asset('imagenes/carrusel/linea_campo.jpeg')}}" />
     <title>
         Portal Laboral       
     </title>

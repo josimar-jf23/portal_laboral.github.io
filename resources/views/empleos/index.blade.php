@@ -23,7 +23,17 @@
 @endsection
 
 @section('content')
-
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '338089050735691',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v8.0'
+      });
+    };
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v8.0&appId=338089050735691&autoLogAppEvents=1" nonce="fg4XiNS8"></script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col">
@@ -86,27 +96,34 @@
         @foreach ($empleos as $r)
                 <!--<div class="col-md-4"> -->               
                     <div class="card" >
-                        <div class="card-header">
+                        <div class="card-header">                            
+                            <div class="row">
+                                <div class="col">
+                                    <h2><strong>Labor:</strong>{{ $r->puesto->nombre}}</h2>
+                                    <strong>Fecha Convocatoria:</strong> {{ date('d / m / Y',strtotime($r->fecha_convocatoria)) }}
+                                </div>
+                            </div>
+                            
                             <!--<a href="#" class="btn btn-success float-right" style="text-align:right" data-toggle="tooltip" title="Postular!" onclick="suscripcion({{ $r->id }})"><i class="fas fa-thumbs-up"></i></a>-->
-                            <a href="#" class="btn btn-success float-right" style="text-align:right" title="Postular!" onclick="suscripcion({{ $r->id }})">Postular</a>
-                            <h2><strong>Puesto:</strong>{{ $r->puesto->nombre}}</h2>
-                            <strong>Fecha Convocatoria:</strong> {{ date('d / m / Y',strtotime($r->fecha_convocatoria)) }}
+                                                        
                         </div>
                         <div class="card-body">
                             <p><strong>Empresa:</strong>{{ $r->empresa->nombre}}<br>
-                                <strong>Area:</strong>{{ $r->puesto->subarea->area->nombre}}<br>
-                                <strong>Sub Area:</strong>{{ $r->puesto->subarea->nombre}}<br>
                                 <strong>Vacantes:</strong>{{ $r->vacantes}}<br>
                                 @if ($r->sueldo)
                                     <strong>Sueldo:</strong>{{ $r->sueldo}}
                                 @endif
-                            </p>                            
-                            @if(count($r->detalle_publicaciones)>0)
-                                <p><a href="{{ route('empleos.show',$r->id)}}">Leer mas...</a></p>
-                            @endif                        
+                            </p> 
+                            <p><a href="{{ route('empleos.show',$r->id)}}">Leer mas...</a></p>                                                   
                         </div>
                         <div class="card-footer">
-                            <p>{{ $r->adicional }}</p>
+                            <div class="row">
+                                
+                                <div class="col">
+                                    <a href="#" class="btn btn-success float-right" style="text-align:center" title="Postular!" onclick="suscripcion({{ $r->id }})">Postular</a>
+                                </div>                             
+                            </div>
+                            <!--<p>{{ $r->adicional }}</p>-->
                         </div>
                     </div>
                 <!-- </div>-->
