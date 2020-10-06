@@ -27,16 +27,18 @@ class EmpleosController extends Controller
                 ->anio_convocatoria($anio_convocatoria)
                 ->paginate(6)
                 ->setPath(route('empleos.index'));
-        //$puestos=Puesto::all();
         $puestos=DB::table('publicaciones')->select('publicaciones.puesto_id as id','puestos.nombre')->distinct() ->leftJoin('puestos', 'publicaciones.puesto_id', '=', 'puestos.id')->get();
-        //$anios=DB::table('publicaciones')->selectRaw('YEAR(fecha_convocatoria) as anio')->distinct()->get();
-        //$anios=DB::select(DB::raw('select distinct date_format(fecha_convocatoria, "%Y") as anio from publicaciones'))->get();
-        $anios=DB::select('select distinct YEAR(fecha_convocatoria) as anio from publicaciones');
-        $meses=DB::select('select distinct MONTH(fecha_convocatoria) as mes from publicaciones');
-        //$meses=Publicacion::select(DB::raw('MONTH(fecha_convocatoria) as mes'))->distinct()->get();
-        //$meses=DB::table('publicaciones')->selectRaw('MONTH(fecha_convocatoria) as mes')->distinct()->get();
-        //dd($meses);
-        //dd($puestos);
+        $fechas=DB::table('publicaciones')->select('fecha_convocatoria')->get();
+        $anios=array();
+        $meses=array();
+        foreach($fechas as $r){
+            $date_y = date("Y",strtotime($r->fecha_convocatoria));
+            $date_m = date("m",strtotime($r->fecha_convocatoria));
+            array_push($anios,$date_y);
+            array_push($meses,$date_m);
+        }
+        $anios=array_unique($anios);
+        $meses=array_unique($meses);
         $empresas=Empresa::all();
         return view('empleos.index',compact('empleos','puestos','empresas','fecha_convocatoria','puesto_id','empresa_id','anios','anio_convocatoria','meses','mes_convocatoria'));
     }

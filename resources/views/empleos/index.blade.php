@@ -68,9 +68,9 @@
                         <select class="form-control" id="mes_convocatoria" name="mes_convocatoria">
                             <option value="" selected>Seleccionar</option>
                             @foreach ($meses as $r)
-                            <option value="{{ $r->mes}}" {{ ($mes_convocatoria==$r->mes) ? 'selected' : '' }}>
+                            <option value="{{ $r}}" {{ ($mes_convocatoria==$r) ? 'selected' : '' }}>
                                 @php
-                                    switch( $r->mes ) {
+                                    switch( $r ) {
                                         case '01': echo 'Enero'; break;
                                         case '02': echo 'Febrero'; break;
                                         case '03': echo 'Marzo'; break;
@@ -94,7 +94,7 @@
                         <select class="form-control" id="anio_convocatoria" name="anio_convocatoria">
                             <option value="" selected>Seleccionar</option>
                             @foreach ($anios as $r)
-                                <option value="{{ $r->anio}}" {{ ($anio_convocatoria==$r->anio) ? 'selected' : '' }}>{{ $r->anio}}</option>
+                                <option value="{{ $r}}" {{ ($anio_convocatoria==$r) ? 'selected' : '' }}>{{ $r}}</option>
                             @endforeach
                         </select>
                         
