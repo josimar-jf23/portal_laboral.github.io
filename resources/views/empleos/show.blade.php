@@ -14,8 +14,8 @@
 @section('meta_part')
     <meta property="og:url"           content="{{ URL::to('empleos',$empleo->id)}}" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="{{ $empleo->empresa->nombre}}" />
-    <meta property="og:description"   content="Your description" />
+    <meta property="og:title"         content="{{ $empleo->empresa->nombre}} {{ $empleo->puesto->nombre}}" />
+    <meta property="og:description"   content="Se busca trabajadores para cubri el puesto {{ $empleo->puesto->nombre}} para la empresa {{ $empleo->empresa->nombre}} " />
     <meta property="og:image"         content="{{asset('imagenes/carrusel/linea_campo.jpeg')}}" />
 @endsection
 @section('content')
