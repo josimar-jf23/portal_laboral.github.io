@@ -45,7 +45,8 @@
                     <p>{{ $empleo->adicional }}</p>           
                 </div>
                 <div class="card-footer">                 
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href={{ URL::to('empleos',$empleo->id)}}&layout=button&size=large&appId=338089050735691&width=103&height=28" width="103" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                    <!--<iframe src="https://www.facebook.com/plugins/share_button.php?href={{ URL::to('empleos',$empleo->id)}}&layout=button&size=large&appId=338089050735691&width=103&height=28" width="103" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>-->
+                    <iframe src="https://www.facebook.com/plugins/share_button.php?href={{ URL::to('empleos',$empleo->id)}}&layout=button_count&size=large&appId=338089050735691&width=151&height=28" width="151" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                 </div>
             </div>
         </div>          
