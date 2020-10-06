@@ -45,5 +45,17 @@ class Publicacion extends Model
             return $query->where('fecha_convocatoria','=',$fecha_convocatoria);
         }
     }
+    public function scopeMes_convocatoria($query,$mes_convocatoria){
+        //dd($fecha_convocatoria2);
+        if($mes_convocatoria){
+            return $query->whereMonth('fecha_convocatoria','=',$mes_convocatoria);
+        }
+    }
+    public function scopeAnio_convocatoria($query,$anio_convocatoria){
+        //dd($fecha_convocatoria2);
+        if($anio_convocatoria){
+            return $query->whereYear('fecha_convocatoria','=',$anio_convocatoria);
+        }
+    }
     
 }

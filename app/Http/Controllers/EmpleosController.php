@@ -15,19 +15,26 @@ class EmpleosController extends Controller
         $puesto_id=$request->get('puesto_id');
         $empresa_id=$request->get('empresa_id');
         $fecha_convocatoria=$request->get('fecha_convocatoria');
+        $mes_convocatoria=$request->get('mes_convocatoria');
+        $anio_convocatoria=$request->get('anio_convocatoria');
         //dd($request);  
         $empleos=Publicacion::where('estado','1')
                 ->orderBy('id', 'desc')
                 ->puesto_id($puesto_id)
                 ->empresa_id($empresa_id)
                 ->fecha_convocatoria($fecha_convocatoria)
+                ->mes_convocatoria($mes_convocatoria)
+                ->anio_convocatoria($anio_convocatoria)
                 ->paginate(6)
                 ->setPath(route('empleos.index'));
         //$puestos=Puesto::all();
         $puestos=DB::table('publicaciones')->select('publicaciones.puesto_id as id','puestos.nombre')->distinct() ->leftJoin('puestos', 'publicaciones.puesto_id', '=', 'puestos.id')->get();
+        $anios=DB::table('publicaciones')->selectRaw('YEAR(fecha_convocatoria) as anio')->distinct()->get();
+        $meses=DB::table('publicaciones')->selectRaw('MONTH(fecha_convocatoria) as mes')->distinct()->get();
+        //dd($meses);
         //dd($puestos);
         $empresas=Empresa::all();
-        return view('empleos.index',compact('empleos','puestos','empresas','fecha_convocatoria','puesto_id','empresa_id'));
+        return view('empleos.index',compact('empleos','puestos','empresas','fecha_convocatoria','puesto_id','empresa_id','anios','anio_convocatoria','meses','mes_convocatoria'));
     }
     public function show($id)
     {

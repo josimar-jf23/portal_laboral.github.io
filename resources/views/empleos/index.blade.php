@@ -40,7 +40,7 @@
             <form method="GET" action="{{ route('empleos.index') }}">
                 <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
                 <div class="form-group row">
-                    <div class="col-md-3">
+                    <div class="col-md">
                         <label for="puesto_id" class="col-form-label text-md-right">Puestos</label>
                         <select class="form-control" id="puesto_id" name="puesto_id">
                             <option value="" selected>Seleccionar</option>
@@ -49,7 +49,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md">
                         <label for="empresa_id" class="col-form-label text-md-right">Empresas</label>
                         <select class="form-control" id="empresa_id" name="empresa_id">
                             <option value="" selected>Seleccionar</option>
@@ -59,16 +59,65 @@
                         </select>
                         
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md">
+                        <!--
                         <label for="fecha_convocatoria" class="col-form-label text-md-right">Fecha Convocatoria</label>
                         <input id="fecha_convocatoria" type="date" value="{{$fecha_convocatoria}}" class="form-control" name="fecha_convocatoria"> 
+                        -->
+                        <label for="mes_convocatoria" class="col-form-label text-md-right">Mes </label>
+                        <select class="form-control" id="mes_convocatoria" name="mes_convocatoria">
+                            <option value="" selected>Seleccionar</option>
+                            @foreach ($meses as $r)
+                            <option value="{{ $r->mes}}" {{ ($mes_convocatoria==$r->mes) ? 'selected' : '' }}>
+                                @php
+                                    switch( $r->mes ) {
+                                        case '01': echo 'Enero'; break;
+                                        case '02': echo 'Febrero'; break;
+                                        case '03': echo 'Marzo'; break;
+                                        case '04': echo 'Abril'; break;
+                                        case '05': echo 'Mayo'; break;
+                                        case '06': echo 'Junio'; break;
+                                        case '07': echo 'Julio'; break;
+                                        case '08': echo 'Agosto'; break;
+                                        case '09': echo 'Setiembre'; break;
+                                        case '10': echo 'Octubre'; break;
+                                        case '11': echo 'Noviembre'; break;
+                                        case '12': echo 'Diciembre'; break;
+                                    }
+                                @endphp
+                            </option>
+                            @endforeach                          
+                        </select>
                     </div>
-                    <div class="col-md-3" style="display: flex;justify-content: flex-start; align-items: flex-end;height: auto; ">
+                    <div class="col-md">
+                        <label for="anio_convocatoria" class="col-form-label text-md-right">Año</label>
+                        <select class="form-control" id="anio_convocatoria" name="anio_convocatoria">
+                            <option value="" selected>Seleccionar</option>
+                            @foreach ($anios as $r)
+                                <option value="{{ $r->anio}}" {{ ($anio_convocatoria==$r->anio) ? 'selected' : '' }}>{{ $r->anio}}</option>
+                            @endforeach
+                        </select>
+                        
+                    </div>
+                    <div class="col-md">
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-success" title="Buscar">
+                                Buscar
+                            </button>
+                            <a class="btn btn-info" href="{{ route('empleos.index')}}">Limpiar</a>
+                            
+                            
+                        </div>                                                                                            
+                    </div>
+                    <!--
+                    <div class="col-md" style="display: flex;justify-content: flex-start; align-items: flex-end;height: auto; ">
                         <button type="submit" class="btn btn-success" title="Buscar">
                             Buscar
                         </button>
-                                              
+                        <a class="btn btn-info" href="{{ route('empleos.index')}}">Limpiar</a>                                              
                     </div>
+                    -->
                 </div>
             </form>
         </div>
@@ -232,5 +281,8 @@
             $("#vista_previa").modal("show");
             $("#publicacion_id").val(valor);
           }
+    </script>
+    <script>
+
     </script>
 @endsection
