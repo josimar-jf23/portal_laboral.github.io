@@ -31,8 +31,8 @@ class EmpleosController extends Controller
         $puestos=DB::table('publicaciones')->select('publicaciones.puesto_id as id','puestos.nombre')->distinct() ->leftJoin('puestos', 'publicaciones.puesto_id', '=', 'puestos.id')->get();
         //$anios=DB::table('publicaciones')->selectRaw('YEAR(fecha_convocatoria) as anio')->distinct()->get();
         //$anios=DB::select(DB::raw('select distinct date_format(fecha_convocatoria, "%Y") as anio from publicaciones'))->get();
-        $anios=DB::select('select distinct date_format(fecha_convocatoria, "%Y") as anio from publicaciones');
-        $meses=DB::select('select distinct date_format(fecha_convocatoria, "%m") as mes from publicaciones');
+        $anios=DB::select('select distinct YEAR(fecha_convocatoria) as anio from publicaciones');
+        $meses=DB::select('select distinct MONTH(fecha_convocatoria) as mes from publicaciones');
         //$meses=Publicacion::select(DB::raw('MONTH(fecha_convocatoria) as mes'))->distinct()->get();
         //$meses=DB::table('publicaciones')->selectRaw('MONTH(fecha_convocatoria) as mes')->distinct()->get();
         //dd($meses);
