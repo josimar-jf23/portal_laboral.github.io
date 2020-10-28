@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-header">
                     <a href="{{ route('empleos.index')}}" class="btn btn-success float-right" style="text-align:right"><i class="fas fa-arrow-left"></i> Volver</a>
-                    <h2><strong>Puesto:</strong>{{ $empleo->puesto->nombre}}</h2>
+                    <h2><strong>Labor: </strong>{{ $empleo->puesto->nombre}}</h2>
                     <strong>Fecha Convocatoria:</strong> {{ $empleo->fecha_convocatoria }}                    
                 </div>
                 <div class="card-body">

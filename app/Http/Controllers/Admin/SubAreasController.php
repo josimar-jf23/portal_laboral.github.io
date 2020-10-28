@@ -49,6 +49,8 @@ class SubAreasController extends Controller
             'nombre' => 'required'
         ]);
         $subarea->nombre=$request->nombre;
+        $subarea->descripcion=$request->descripcion;
+        
         $subarea->save();
         return redirect()->route('admin.subareas.index');
         //dd($request);

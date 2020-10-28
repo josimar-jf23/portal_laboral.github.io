@@ -19,14 +19,29 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index:999 !important;
+      }
+      .main{
+        position: relative;
+        top:65px;
+      }
+    </style>
     @yield('css_part')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-fixed-top navbar-light bg-white shadow-sm" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-color: #e3f2fd;overflow: visible;background-color: #333;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <span style="font-size: 2em;"><b>Labor</b> Agro</span> 
+                    <img src="{{asset('imagenes/carrusel/logo_agro.png')}}" alt="logo" style="width: 6em">
+                    <!--<span style="font-size: 2em;"><b>Labor</b> Agro</span>-->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -49,7 +64,7 @@
                         </li>
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link" href="{{ route('login') }}">Soy Empresa</a>
                             </li>
                             
                         @else
@@ -78,11 +93,11 @@
                 </div>
             </div>
         </nav>
-        <section>
+        <div class="main">
             <main class="py-4">
                 @yield('content')
             </main>
-        </section>
+        </div>
         
     </div>
     @yield('script_part')

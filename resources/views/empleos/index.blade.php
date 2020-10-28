@@ -148,7 +148,7 @@
                         <div class="card-header">                            
                             <div class="row">
                                 <div class="col">
-                                    <h2><strong>Labor:</strong>{{ $r->puesto->nombre}}</h2>
+                                    <h2><strong>Labor: </strong>{{ $r->puesto->nombre}}</h2>
                                     <strong>Fecha Convocatoria:</strong> {{ date('d / m / Y',strtotime($r->fecha_convocatoria)) }}
                                 </div>
                             </div>
