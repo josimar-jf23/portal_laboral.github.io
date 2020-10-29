@@ -55,7 +55,7 @@
         font-size: 15px;
         font-family: 'Roboto', sans-serif;
     }
-    $number-of-items: 3;
+    //$number-of-items: 3;
 </style>
 <style>
     #slider {
@@ -68,6 +68,15 @@
         left: 0;
         animation: 30s slider infinite;
         text-align: center;
+    }
+     #slider .contenedor_sliders:before {
+        content:'';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.3);
     }
     #slider figure #sliders {
         width: 20%;
@@ -107,33 +116,33 @@
 <div class="container-fluid">
     <div id="slider">
 		<figure>
-            <div id="sliders" width="100%" height="400px">
+            <div id="sliders" width="100%" height="550px">
                 <div class="contenedor_sliders">
-                    <img src="{{asset('imagenes/carrusel/labor1.jpg')}}" alt="uvas vinos" width="100%" height="400px">
+                    <img src="{{asset('imagenes/carrusel/labor1.jpg')}}" alt="uvas vinos" width="100%" height="550px">
                     <div class="centrado_sliders"><span class="text-large">Empresas agroexportadoras de uvas, citricos, arandanos y mas te están buscando!<br><a href="{{ route('empleos.index')}}">Empleos Aquí</a></span> </div>
                 </div>
             </div>
-            <div id="sliders" width="100%" height="400px">
+            <div id="sliders" width="100%" height="550px">
                 <div class="contenedor_sliders">
-                    <img src="{{asset('imagenes/carrusel/labor3.jpg')}}" alt="uvas vinos" width="100%" height="400px">
+                    <img src="{{asset('imagenes/carrusel/labor3.jpg')}}" alt="uvas vinos" width="100%" height="550px">
                     <div class="centrado_sliders"><span class="text-large">Encuentra la labor agraria a tu medida <br><a href="{{ route('empleos.index')}}">Empleos Aquí</a></span> </div>
                 </div>
             </div>
-            <div id="sliders" width="100%" height="400px">
+            <div id="sliders" width="100%" height="550px">
                 <div class="contenedor_sliders">
-                    <img src="{{asset('imagenes/carrusel/labor4.jpg')}}" alt="uvas vinos" width="100%" height="400px">
+                    <img src="{{asset('imagenes/carrusel/labor4.jpg')}}" alt="uvas vinos" width="100%" height="550px">
                     <div class="centrado_sliders"><span class="text-large">Encuentra trabajo en Campo o en Packing con nosotros! <br><a href="{{ route('empleos.index')}}">Empleos Aquí</a></span> </div>
                 </div>
             </div>
-            <div id="sliders" width="100%" height="400px">
+            <div id="sliders" width="100%" height="550px">
                 <div class="contenedor_sliders">
-                    <img src="{{asset('imagenes/carrusel/labor5.jpg')}}" alt="uvas vinos" width="100%" height="400px">
+                    <img src="{{asset('imagenes/carrusel/labor5.jpg')}}" alt="uvas vinos" width="100%" height="550px">
                     <div class="centrado_sliders"><span class="text-large">Trabaja directo en el sector agrario sin intermediarios <br><a href="{{ route('empleos.index')}}">Empleos Aquí</a></span> </div>
                 </div>
             </div>
-            <div id="sliders" width="100%" height="400px">
+            <div id="sliders" width="100%" height="550px">
                 <div class="contenedor_sliders">
-                    <img src="{{asset('imagenes/carrusel/labor6.jpg')}}" alt="uvas vinos" width="100%" height="400px">
+                    <img src="{{asset('imagenes/carrusel/labor6.jpg')}}" alt="uvas vinos" width="100%" height="550px">
                     <div class="centrado_sliders"><span class="text-large">Trabaja en el sector agrario todo el año! <br><a href="{{ route('empleos.index')}}">Empleos Aquí</a></span> </div>
                 </div>
             </div>		
